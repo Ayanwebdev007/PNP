@@ -1,0 +1,47 @@
+@import url('https://api.fontshare.com/v2/css?f[]=general-sans@400,500&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --pnp-yellow: #fff100;
+    --pnp-red: #ed1c23;
+    --pnp-black: #111827;
+  }
+  
+  html, body {
+    font-family: 'General Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 400;
+    background-color: #ffffff;
+    color: #111827;
+  }
+}
+
+* {
+  font-family: 'General Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+
+/* Brand utility classes for exact yellow (#fff100) and red (#ed1c23) */
+.bg-pnp-red { background-color: #ed1c23 !important; }
+.text-pnp-red { color: #ed1c23 !important; }
+.border-pnp-red { border-color: #ed1c23 !important; }
+
+.bg-pnp-yellow { background-color: #fff100 !important; }
+.text-pnp-yellow { color: #fff100 !important; }
+.border-pnp-yellow { border-color: #fff100 !important; }
+
+/* Custom animations & utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.glass-nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
