@@ -30,7 +30,7 @@ export default function VideoModal({ isOpen, onClose }) {
         <div className="aspect-video w-full bg-black">
           <iframe 
             className="w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" 
+            src="https://www.youtube.com/embed/2bj_SXejLSI?autoplay=1" 
             title="PNP Factory Tour & Corporate Documentary" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

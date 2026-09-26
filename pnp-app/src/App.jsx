@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import EnquiryModal from './components/EnquiryModal';
@@ -33,11 +33,37 @@ function ScrollToTop() {
   return null;
 }
 
+import Lenis from 'lenis';
+
 export default function App() {
   const [enquiryModalOpen, setEnquiryModalOpen] = useState(false);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
   const [synwoodModalOpen, setSynwoodModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState('');
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      smoothTouch: false,
+      touchMultiplier: 2,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
 
   const handleOpenEnquiry = (productName = '') => {
     setSelectedProduct(productName);
@@ -65,15 +91,8 @@ export default function App() {
                 />
               } 
             />
-            <Route path="/about" element={<AboutPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/manufacturing" element={<ManufacturingPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/trading" element={<TradingPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/retail" element={<RetailPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/application" element={<ApplicationsPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/certifications" element={<CertificationsPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/downloads" element={<DownloadsPage />} />
-            <Route path="/contact" element={<ContactPage onOpenEnquiry={handleOpenEnquiry} />} />
-            <Route path="/enquiry" element={<ContactPage onOpenEnquiry={handleOpenEnquiry} />} />
+            {/* FORCE ANY OTHER URL TO IMMEDIATELY REDIRECT TO HOME */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
 

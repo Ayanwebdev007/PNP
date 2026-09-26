@@ -68,23 +68,25 @@ export const synwoodCatalogues = [
 ];
 
 export const businessLogos = [
-  { id: "nytex", name: "NYTEX", division: "mfg", logo: "/assets/businesses/logo-nytex.png", image: "/assets/businesses/nytex-hq.jpg", desc: "India's #2 Nylon Yarn Maker", link: "/manufacturing" },
+  { id: "nytex", name: "NYTEX", division: "mfg", logo: "/assets/businesses/logo-nytex.png", image: "/assets/businesses/nytex-hq-new.png", desc: "India's #2 Nylon Yarn Maker", link: "/manufacturing" },
   { id: "pnp", name: "PNP Polytex", division: "trading", logo: "/assets/businesses/logo-pnp.png", image: "/assets/products/luggage-fabric-hq.jpg", desc: "25% Market Share in Coated Fabrics", link: "/trading#categories" },
   { id: "synwood", name: "Synwood", division: "trading", logo: "/assets/businesses/logo-synwood.png", image: "/assets/products/synwood-boards-hq.jpg", desc: "Premium Synthetic Wood Solutions", link: "https://www.pnpind.com/synthetic-wood-synwood", external: true },
   { id: "hao", name: "HAO Air Ventilators", division: "trading", logo: "/assets/businesses/logo-hao.png", image: "/assets/products/turbo-ventilators-hq.jpg", desc: "High-Performance Air Ventilation", pdf: "/Hao-2026 new.pdf" },
   { id: "tie", name: "TIE Fasteners", division: "trading", logo: "/assets/businesses/logo-tie.png", image: "/assets/products/roofing-screws-hq.jpg", desc: "Industrial Roofing Screws & Fasteners", pdf: "/Tie 2026 New .pdf" },
   { id: "baginnov", name: "BAGINNOV", division: "retail", logo: "/assets/businesses/logo-baginnov.png", image: "/assets/businesses/baginnov-hq.jpg", desc: "25,000 Sq. Ft. Iconic Luggage Mall", link: "https://www.baginnov.in", external: true },
   { id: "haowood", name: "HAOWOOD", division: "trading", logo: "/assets/businesses/logo-haowood.png", image: "/assets/products/synwood-boards-hq.jpg", desc: "Sustainable Building Materials", link: "/trading#categories" },
-  { id: "pennon", name: "PENNON", division: "retail", logo: "/assets/businesses/logo-pennon.png", image: "/assets/businesses/baginnov-showcase.jpg", desc: "Premium Luggage Brand", link: "/retail" },
-  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "/assets/businesses/logo-jaquar.png", image: "/assets/industries/infrastructure-hq.jpg", desc: "Authorized Commercial Distributors", fallback: "/assets/businesses/logo-pnp.png", pdf: "/Jaquar 2062.pdf" }
+  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvFGRcWGp50JVPDTyFW35o9Tc2BEDV0KAqbS2MV3JKKdeq0EeF9zrmx3Qe&s=10", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Authorized Commercial Distributors", pdf: "/Jaquar 2062.pdf" }
 ];
 
 export const featuredProducts = [
-  { id: "luggage-fabric", title: "Luggage Fabric", desc: "Durable. Stylish. Reliable.", image: "/assets/products/luggage-fabric-hq.jpg", link: "/trading#categories" },
-  { id: "nylon-yarn", title: "Nylon Filament Yarn", desc: "Strength for Every Application.", image: "/assets/products/nylon-yarn-hq.jpg", link: "/manufacturing" },
-  { id: "synwood-boards", title: "Synwood Boards", desc: "Modern Alternative. Lasting Value.", image: "/assets/products/synwood-boards-hq.jpg", link: "/trading#categories" },
-  { id: "turbo-ventilators", title: "Turbo Ventilators", desc: "Better Air. Healthier Spaces.", image: "/assets/products/turbo-ventilators-hq.jpg", link: "/trading#categories" },
-  { id: "roofing-screws", title: "Roofing Screws", desc: "Engineered for Strength.", image: "/assets/products/roofing-screws-hq.jpg", link: "/trading#categories" }
+  { id: "warehouse-racking", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.png", title: "Warehouse Racking System", desc: "Heavy duty storage solutions.", image: "/assets/products/racking-hq.jpg", link: "/trading#categories" },
+  { id: "coated-fabric", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.png", title: "Coated Fabric", desc: "Durable. Stylish. Reliable.", image: "/assets/products/luggage-fabric-hq.jpg", link: "/trading#categories" },
+  { id: "webbings", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.png", title: "Webbings", desc: "High tenacity belts and straps.", image: "/assets/products/webbings-hq.jpg", link: "/trading#categories" },
+  { id: "label-tapes", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.png", title: "Label Tapes", desc: "Premium woven label materials.", image: "/assets/products/label-tape-hq.jpg", link: "/trading#categories" },
+  { id: "nylon-yarn", brand: "NYTEX", brandLogo: "/assets/businesses/logo-nytex.png", title: "Nylon Filament Yarn", desc: "Highest quality Nylon Filament Yarn.", image: "/assets/products/nylon-yarn-hq.jpg", link: "/manufacturing" },
+  { id: "synthetic-wood", brand: "Synwood", brandLogo: "/assets/businesses/logo-synwood.png", title: "Synthetic Wood", desc: "Revolutionary PVC wood alternative.", image: "/assets/products/synwood-boards-hq.jpg", link: "/trading#categories" },
+  { id: "air-ventilators", brand: "HAO", brandLogo: "/assets/businesses/logo-hao.png", title: "Air Ventilators", desc: "Natural Air Ventilation Systems.", image: "/assets/products/turbo-ventilators-hq.jpg", link: "/trading#categories" },
+  { id: "roofing-screw", brand: "TiE", brandLogo: "/assets/businesses/logo-tie.png", title: "Roofing Screw", desc: "The Permanent Bond for construction.", image: "/assets/products/roofing-screws-hq.jpg", link: "/trading#categories" }
 ];
 
 export const industriesServe = [
