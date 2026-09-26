@@ -10,7 +10,7 @@ const industries = [
       { name: "Label Tapes", brand: "FNP" },
       { name: "Webbings", brand: "FNP" }
     ],
-    image: "/assets/industries/apparel.jpg",
+    image: "/assets/industries/apparel.webp",
     description: "Supporting the fashion and garment ecosystem with premium filament yarns, woven labels, and high-tenacity belts."
   },
   {
@@ -21,7 +21,7 @@ const industries = [
       { name: "Webbings", brand: "FNP" },
       { name: "Retail Mall", brand: "Baginnov" }
     ],
-    image: "/assets/industries/luggage.jpg",
+    image: "/assets/industries/luggage.webp",
     description: "India's market leader in coated fabrics, powering backpacks, soft luggage, and travel accessories."
   },
   {
@@ -31,7 +31,7 @@ const industries = [
       { name: "Synthetic Wood", brand: "Synwood" },
       { name: "Roofing Screws", brand: "TiE" }
     ],
-    image: "/assets/industries/construction.jpg",
+    image: "/assets/industries/construction-hq.webp",
     description: "Revolutionizing building materials with synthetic wood and permanent bonding solutions for modern infrastructure."
   },
   {
@@ -41,7 +41,7 @@ const industries = [
       { name: "Warehouse Racking", brand: "FNP" },
       { name: "Air Ventilators", brand: "HAO" }
     ],
-    image: "/assets/industries/warehousing-hq.jpg",
+    image: "/assets/industries/warehousing-hq.webp",
     description: "Optimizing supply chains with heavy-duty storage systems and eco-friendly industrial ventilation."
   },
   {
@@ -51,7 +51,7 @@ const industries = [
       { name: "Synthetic Wood", brand: "Synwood" },
       { name: "Office Furniture", brand: "FNP" }
     ],
-    image: "/assets/industries/architecture.jpg",
+    image: "/assets/industries/architecture.webp",
     description: "Elevating commercial and residential spaces with waterproof cladding, decking, and modular furniture."
   },
   {
@@ -61,7 +61,7 @@ const industries = [
       { name: "Webbings", brand: "FNP" },
       { name: "Label Tapes", brand: "FNP" }
     ],
-    image: "/assets/industries/automotive.jpg",
+    image: "/assets/industries/automotive.webp",
     description: "Ensuring life-saving reliability with industrial-grade seat belts, helmet straps, and safety harnesses."
   },
   {
@@ -71,20 +71,20 @@ const industries = [
       { name: "Luggage Fabric", brand: "Aasutex" },
       { name: "Webbings", brand: "FNP" }
     ],
-    image: "/assets/industries/outdoor.jpg",
+    image: "/assets/industries/outdoor.webp",
     description: "Engineered for extremes, providing durable fabrics for tents, windcheaters, and trekking equipment."
   }
 ];
 
 const getBrandLogo = (brand) => {
   const logos = {
-    "NYTEX": "/assets/businesses/logo-nytex.png",
-    "FNP": "/assets/businesses/logo-pnp.png",
-    "Aasutex": "/assets/businesses/logo-pnp.png",
-    "Synwood": "/assets/businesses/logo-synwood.png",
-    "TiE": "/assets/businesses/logo-tie.png",
-    "HAO": "/assets/businesses/logo-hao.png",
-    "Baginnov": "/assets/businesses/logo-baginnov.png"
+    "NYTEX": "/assets/businesses/logo-nytex.webp",
+    "FNP": "/assets/businesses/logo-pnp.webp",
+    "Aasutex": "/assets/businesses/logo-pnp.webp",
+    "Synwood": "/assets/businesses/logo-synwood.webp",
+    "TiE": "/assets/businesses/logo-tie.webp",
+    "HAO": "/assets/businesses/logo-hao.webp",
+    "Baginnov": "/assets/businesses/logo-baginnov.webp"
   };
   return logos[brand];
 };

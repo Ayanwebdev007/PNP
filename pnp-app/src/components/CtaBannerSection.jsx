@@ -24,7 +24,7 @@ export default function CtaBannerSection({ onOpenEnquiry }) {
           
           {/* Background Image */}
           <img 
-            src="/assets/cta/banner-bg.jpg" 
+            src="/assets/cta/banner-bg.webp" 
             alt="PNP Manufacturing Facility" 
             className="absolute inset-0 w-full h-full object-cover"
           />

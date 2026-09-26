@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Col 1: Brand (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <Link to="/" className="inline-block">
-              <img src="/assets/footer-logo.png?v=trendsetters_v1" alt="PNP Logo" className="h-14 w-auto brightness-0 invert" />
+              <img src="/assets/footer-logo.webp?v=trendsetters_v1" alt="PNP Logo" className="h-14 w-auto brightness-0 invert" />
             </Link>
             <p className="text-[#fff100] font-semibold uppercase tracking-wider text-[11px]">
               BUILDING A STRONGER INDIA SINCE 1997

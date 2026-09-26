@@ -49,7 +49,7 @@ export default function AboutPage({ onOpenEnquiry }) {
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-slate-800">
-            <img src="/assets/about/building.jpg" alt="PNP Headquarters" className="w-full h-80 object-cover" />
+            <img src="/assets/about/building.webp" alt="PNP Headquarters" className="w-full h-80 object-cover" />
           </div>
         </div>
 

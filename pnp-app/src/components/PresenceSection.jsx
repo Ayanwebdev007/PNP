@@ -166,7 +166,7 @@ export default function PresenceSection() {
               </div>
               <div className="w-px h-6 bg-slate-200"></div>
               <div className="flex items-center gap-2.5">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/330px-Flag_of_the_Republic_of_China.svg.png" alt="Taiwan" className="w-10 h-7 object-cover rounded shadow-sm border border-slate-200" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/330px-Flag_of_the_Republic_of_China.svg.webp" alt="Taiwan" className="w-10 h-7 object-cover rounded shadow-sm border border-slate-200" />
                 <span className="font-medium text-slate-700 text-base">Taiwan</span>
               </div>
             </div>

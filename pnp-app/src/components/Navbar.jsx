@@ -26,7 +26,7 @@ export default function Navbar({ onOpenEnquiry }) {
         {/* Brand Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src="/assets/logo.png?v=trendsetters_v1" 
+            src="/assets/logo.webp?v=trendsetters_v1" 
             alt="PNP Logo" 
             className="h-10 md:h-11 w-auto object-contain"
           />
@@ -64,7 +64,7 @@ export default function Navbar({ onOpenEnquiry }) {
                 </ul>
               </div>
               <div className="rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-2 text-center">
-                <img src="/assets/about/building.jpg" alt="PNP Headquarters" className="w-full h-28 object-cover rounded-md mb-2" />
+                <img src="/assets/about/building.webp" alt="PNP Headquarters" className="w-full h-28 object-cover rounded-md mb-2" />
                 <span className="text-[11px] font-medium text-slate-900 block leading-tight">PNP Corporate Headquarters</span>
                 <span className="text-[10px] text-slate-500 block">Trusted Solutions Since 1997</span>
               </div>
@@ -98,7 +98,7 @@ export default function Navbar({ onOpenEnquiry }) {
                 </ul>
               </div>
               <div className="rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-2 text-center">
-                <img src="/assets/businesses/nytex-hq.jpg" alt="NYTEX Bhilad Facility" className="w-full h-28 object-cover rounded-md mb-2" />
+                <img src="/assets/businesses/nytex-hq.webp" alt="NYTEX Bhilad Facility" className="w-full h-28 object-cover rounded-md mb-2" />
                 <span className="text-[11px] font-medium text-slate-900 block leading-tight">NYTEX (#2 Largest in India)</span>
                 <span className="text-[10px] text-slate-500 block">Oerlikon Barmag Tech • 100% Green Energy</span>
               </div>
@@ -132,7 +132,7 @@ export default function Navbar({ onOpenEnquiry }) {
                 </ul>
               </div>
               <div className="rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-2 text-center">
-                <img src="/assets/products/luggage-fabric-hq.jpg" alt="Coated Fabrics" className="w-full h-28 object-cover rounded-md mb-2" />
+                <img src="/assets/products/luggage-fabric-hq.webp" alt="Coated Fabrics" className="w-full h-28 object-cover rounded-md mb-2" />
                 <span className="text-[11px] font-medium text-slate-900 block leading-tight">Own Brands & Distribution</span>
                 <span className="text-[10px] text-slate-500 block">25% Fabric Share • Jaquar Partner</span>
               </div>
@@ -165,7 +165,7 @@ export default function Navbar({ onOpenEnquiry }) {
                 </ul>
               </div>
               <div className="rounded-lg overflow-hidden bg-slate-50 border border-slate-200 p-2 text-center">
-                <img src="/assets/businesses/baginnov-hq.jpg" alt="BAGINNOV Mall" className="w-full h-28 object-cover rounded-md mb-2" />
+                <img src="/assets/businesses/baginnov-hq.webp" alt="BAGINNOV Mall" className="w-full h-28 object-cover rounded-md mb-2" />
                 <span className="text-[11px] font-medium text-slate-900 block leading-tight">BAGINNOV Iconic Mall</span>
                 <span className="text-[10px] text-slate-500 block">3-Floor 25,000 Sq. Ft. Mall</span>
               </div>

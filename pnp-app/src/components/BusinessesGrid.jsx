@@ -58,7 +58,7 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
       {/* Massive Background Watermark */}
       <div className="absolute right-0 top-10 pointer-events-none z-0">
         <img 
-          src="/assets/logo.png?v=trendsetters_v1" 
+          src="/assets/logo.webp?v=trendsetters_v1" 
           alt="" 
           className="h-[300px] md:h-[400px] lg:h-[500px] w-auto object-contain filter grayscale opacity-[0.05] mix-blend-multiply [clip-path:inset(0_0_32%_0)]"
         />

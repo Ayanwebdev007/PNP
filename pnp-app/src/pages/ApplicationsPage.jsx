@@ -7,31 +7,31 @@ export default function ApplicationsPage({ onOpenEnquiry }) {
       title: "Travel Luggage & Backpacks",
       icon: Shield,
       desc: "PVC/PU coated high-denier fabrics, NYTEX textured yarns, and zippers engineered for extreme durability, water repellency, and tear resistance.",
-      img: "/assets/industries/textile-luggage-hq.jpg"
+      img: "/assets/industries/textile-luggage-hq.webp"
     },
     {
       title: "Apparel & Ready-Made Garments",
       icon: Shirt,
       desc: "Nylon 6 & 66 FDY/DTY filament yarns supplied to India's top textile mills for high-end fashion, innerwear, and outerwear weaving.",
-      img: "/assets/products/nylon-yarn-hq.jpg"
+      img: "/assets/products/nylon-yarn-hq.webp"
     },
     {
       title: "Automotive Interiors & Trims",
       icon: Car,
       desc: "High-tenacity nylon webbing yarns, seatbelt reinforcement, helmet harnesses, and interior acoustic insulation fabrics.",
-      img: "/assets/products/luggage-fabric-hq.jpg"
+      img: "/assets/products/luggage-fabric-hq.webp"
     },
     {
       title: "PEB Roofing & Industrial Storage",
       icon: Building2,
       desc: "HAO roof turbo ventilators, TIE corrosion-resistant self-drilling screws, and PNP heavy-duty pallet racking systems.",
-      img: "/assets/products/turbo-ventilators-hq.jpg"
+      img: "/assets/products/turbo-ventilators-hq.webp"
     },
     {
       title: "Sportswear & Active Mesh",
       icon: Trophy,
       desc: "Air Covered Yarn (ACY) & breathable mesh fabrics for activewear, sportswear, athletic footwear, and protective pads.",
-      img: "/assets/products/nylon-yarn-hq.jpg"
+      img: "/assets/products/nylon-yarn-hq.webp"
     }
   ];
 

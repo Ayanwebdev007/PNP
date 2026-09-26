@@ -6,33 +6,33 @@ import { motion } from 'framer-motion';
 const mediaArticles = [
   {
     id: "bt1",
-    logo: "/assets/media/logo-business-today.png",
+    logo: "/assets/media/logo-business-today.webp",
     channel: "Business Today",
     headline: "Hurdles in India's Economic Growth",
-    image: "/assets/media/00fffe_7cb6a5f1bba84df3830344e6823d386f~mv2.avif"
+    image: "/assets/media/00fffe_7cb6a5f1bba84df3830344e6823d386f~mv2.webp"
   },
   {
     id: "et",
-    logo: "/assets/media/logo-economic-times.png",
+    logo: "/assets/media/logo-economic-times.webp",
     channel: "The Economic Times",
     headline: "The Trendsetter India Needs",
-    image: "/assets/media/00fffe_9aa6e92a7fef4c64a00cee75f9ee197d~mv2.avif",
+    image: "/assets/media/00fffe_9aa6e92a7fef4c64a00cee75f9ee197d~mv2.webp",
     logoClass: "h-10 md:h-11"
   },
   {
     id: "forbes",
-    logo: "/assets/media/logo-forbes.png",
+    logo: "/assets/media/logo-forbes.webp",
     channel: "Forbes India",
     headline: "Sincerity is a Secret For Success",
-    image: "/assets/media/00fffe_e983c35809ef431da9c283c7af2c42ae~mv2.avif",
+    image: "/assets/media/00fffe_e983c35809ef431da9c283c7af2c42ae~mv2.webp",
     objectPosition: "object-right-top"
   },
   {
     id: "bt2",
-    logo: "/assets/media/logo-business-today.png",
+    logo: "/assets/media/logo-business-today.webp",
     channel: "Business Today",
     headline: "The Indian Tax Paradox",
-    image: "/assets/media/f07f21_351a5c3376ff499aaeb0cf114a3a62a1~mv2.avif"
+    image: "/assets/media/f07f21_351a5c3376ff499aaeb0cf114a3a62a1~mv2.webp"
   }
 ];
 

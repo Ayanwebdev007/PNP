@@ -95,7 +95,7 @@ export default function StatsTrustSection() {
       
       {/* Full-width User Uploaded Background Image */}
       <img 
-        src="/assets/stats-bg.png"
+        src="/assets/stats-bg.webp"
         alt="Background"
         className="absolute inset-0 w-full h-full object-cover pointer-events-none object-[right_30%]"
       />

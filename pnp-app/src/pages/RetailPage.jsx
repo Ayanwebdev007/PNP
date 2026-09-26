@@ -67,7 +67,7 @@ export default function RetailPage({ onOpenEnquiry }) {
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-slate-800">
-            <img src="/assets/businesses/baginnov-hq.jpg" alt="BAGINNOV Megastore" className="w-full h-96 object-cover" />
+            <img src="/assets/businesses/baginnov-hq.webp" alt="BAGINNOV Megastore" className="w-full h-96 object-cover" />
           </div>
         </div>
 

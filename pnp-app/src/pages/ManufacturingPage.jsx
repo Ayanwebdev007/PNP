@@ -74,7 +74,7 @@ export default function ManufacturingPage({ onOpenEnquiry }) {
           </div>
 
           <div className="rounded-2xl overflow-hidden border border-slate-800">
-            <img src="/assets/businesses/nytex-hq.jpg" alt="NYTEX Bhilad Plant" className="w-full h-96 object-cover" />
+            <img src="/assets/businesses/nytex-hq.webp" alt="NYTEX Bhilad Plant" className="w-full h-96 object-cover" />
           </div>
         </div>
 

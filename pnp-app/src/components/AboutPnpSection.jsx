@@ -65,7 +65,7 @@ export default function AboutPnpSection({ onOpenVideoModal }) {
               </svg>
             </div>
             <div className="w-[1px] h-8 bg-white/60"></div>
-            <img src="/assets/logo.png" alt="PNP" className="h-7 lg:h-8 object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-xl" />
+            <img src="/assets/logo.webp" alt="PNP" className="h-7 lg:h-8 object-contain group-hover:scale-105 transition-transform duration-500 drop-shadow-xl" />
           </div>
           <h3 className="text-white font-medium text-xl lg:text-3xl tracking-wide group-hover:translate-x-2 transition-transform duration-500 drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)]">
             Know our Story on Youtube

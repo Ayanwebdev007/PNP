@@ -7,42 +7,42 @@ export default function TradingPage({ onOpenEnquiry }) {
       name: "PNP Coated Fabrics",
       share: "25% Indian Market Share",
       desc: "High-denier PVC & PU coated nylon/polyester fabrics engineered for soft luggage, backpacks, rainwear, and industrial canvas.",
-      img: "/assets/products/luggage-fabric-hq.jpg",
+      img: "/assets/products/luggage-fabric-hq.webp",
       pdf: "/PNP All Logos.pdf"
     },
     {
       name: "Synwood & Haowood",
       share: "10% Market Share",
       desc: "100% Waterproof, termite-proof & fire-retardant synthetic wood WPC/PVC boards for luxury interiors & exterior cladding.",
-      img: "/assets/products/synwood-boards-hq.jpg",
+      img: "/assets/products/synwood-boards-hq.webp",
       pdf: "/PNP diary 2019.pdf"
     },
     {
       name: "HAO Roof Turbo Ventilators",
       share: "Eco-Friendly Ventilation",
       desc: "Stainless steel & aluminium wind-driven roof ventilators for industrial factories, warehouses & commercial buildings.",
-      img: "/assets/products/turbo-ventilators-hq.jpg",
+      img: "/assets/products/turbo-ventilators-hq.webp",
       pdf: "/Hao-2026 new.pdf"
     },
     {
       name: "TIE Roofing Fasteners",
       share: "PEB Self-Drilling Screws",
       desc: "High-tensile corrosion resistant self-drilling screws with EPDM washers for pre-engineered steel buildings.",
-      img: "/assets/products/roofing-screws-hq.jpg",
+      img: "/assets/products/roofing-screws-hq.webp",
       pdf: "/Tie Scres 2026.pdf"
     },
     {
       name: "PNP Heavy Duty Racking Systems",
       share: "Warehousing Storage",
       desc: "Heavy duty pallet racking, selective racks, and mezzanine systems for modern logistics warehouses.",
-      img: "/assets/about/building.jpg",
+      img: "/assets/about/building.webp",
       pdf: "/PNP Racking 2026.pdf"
     },
     {
       name: "Jaquar Commercial Lighting",
       share: "Mumbai Authorized Distributor",
       desc: "Authorized distribution partner for Jaquar commercial, architectural & smart outdoor lighting solutions (Bandra to Virar).",
-      img: "/assets/about/building.jpg",
+      img: "/assets/about/building.webp",
       pdf: "/Jaquar 2062.pdf"
     }
   ];
