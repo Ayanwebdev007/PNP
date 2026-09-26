@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import { X, Send, CheckCircle2 } from 'lucide-react';
+import { X, Send, User, Mail, Phone, Building2, MessageSquare, CheckCircle2, Handshake, ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function EnquiryModal({ isOpen, onClose, initialProduct = "" }) {
+export default function EnquiryModal({ isOpen, onClose }) {
   const [formData, setFormData] = useState({
-    fullName: '',
-    companyName: '',
-    emailAddr: '',
-    phoneNum: '',
-    interestCategory: initialProduct || 'trading-textiles',
-    enquiryMessage: ''
+    name: '', company: '', email: '', phone: '', message: ''
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -20,149 +16,156 @@ export default function EnquiryModal({ isOpen, onClose, initialProduct = "" }) {
     setTimeout(() => {
       setSubmitted(false);
       onClose();
-    }, 2500);
+    }, 4000);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md animate-fade-in">
-      <div className="relative w-full max-w-xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-300">
         
-        {/* Header */}
-        <div className="px-6 py-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
-          <div>
-            <span className="text-[10px] font-extrabold uppercase tracking-widest text-red-500 bg-red-950/80 px-2 py-0.5 rounded border border-red-500/30">
-              QUICK CONNECT
-            </span>
-            <h3 className="text-lg font-bold text-white mt-1">Business & Technical Inquiry</h3>
-          </div>
+        {/* Modal Backdrop Click to Close */}
+        <div className="absolute inset-0 cursor-pointer" onClick={onClose}></div>
+
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 20 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="relative w-full max-w-6xl z-10"
+        >
+          
+          {/* Close Button (Floating outside or top right of banner) */}
           <button 
             onClick={onClose}
-            className="p-1.5 rounded-full hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+            className="absolute -top-4 -right-4 md:-top-6 md:-right-6 p-2 md:p-3 bg-white text-slate-900 rounded-full hover:bg-red-500 hover:text-white transition-colors shadow-2xl z-20 group"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 md:w-6 md:h-6 transform group-hover:rotate-90 transition-transform duration-300" />
           </button>
-        </div>
 
-        {/* Content */}
-        <div className="p-6">
-          {submitted ? (
-            <div className="py-10 text-center space-y-3">
-              <CheckCircle2 className="w-16 h-16 text-emerald-500 mx-auto animate-bounce" />
-              <h4 className="text-xl font-bold text-slate-900">Inquiry Submitted!</h4>
-              <p className="text-xs text-slate-600 max-w-md mx-auto">
-                Thank you! Your inquiry has been forwarded to PNP Industrial Solutions. Our technical sales team will contact you within 24 hours.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 text-xs font-semibold text-slate-700">
+          {/* Full Banner Design */}
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[480px] flex items-center w-full">
+            
+            {/* Background Image */}
+            <img 
+              src="/assets/cta/banner-bg.webp" 
+              alt="PNP Manufacturing Facility" 
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            
+            {/* Dark overlay gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40"></div>
+            
+            {/* Content */}
+            <div className="relative z-10 w-full px-6 py-10 md:px-12 md:py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-1">Full Name *</label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.fullName}
-                    onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                    placeholder="Enter your full name"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:outline-none font-normal"
-                  />
+              {/* Left: Text Content */}
+              <div className="space-y-6 hidden sm:block">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-0.5 bg-[#ed1c23]"></div>
+                  <span className="text-sm font-semibold tracking-[0.2em] text-[#ed1c23] uppercase">
+                    Partner With Us
+                  </span>
                 </div>
-                <div>
-                  <label className="block mb-1">Company / Organization *</label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.companyName}
-                    onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                    placeholder="Company name"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:outline-none font-normal"
-                  />
+
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight text-white leading-tight max-w-md">
+                  Let's Build a Stronger <span className="text-[#fff100]">Tomorrow.</span>
+                </h2>
+
+                <div className="pt-4">
+                  <div className="text-white/40 text-xs uppercase tracking-wider mb-1">People · Products · Progress</div>
+                  <div className="text-[#fff100] font-bold text-sm tracking-wider">A STRONGER INDIA</div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block mb-1">Business Email *</label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.emailAddr}
-                    onChange={(e) => setFormData({ ...formData, emailAddr: e.target.value })}
-                    placeholder="name@company.com"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:outline-none font-normal"
-                  />
+              {/* Right: Enquiry Form */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="bg-white rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl relative overflow-hidden">
+                  <h3 className="text-slate-900 font-bold text-xl mb-1 pr-8">Quick Enquiry</h3>
+                  <p className="text-slate-500 text-sm mb-6">We'll get back to you within 24 hours.</p>
+
+                  {submitted ? (
+                    <div className="text-center py-10 space-y-3 animate-in fade-in zoom-in duration-300">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle2 className="w-8 h-8 text-green-600" />
+                      </div>
+                      <div className="text-slate-900 font-bold text-xl">Thank You!</div>
+                      <p className="text-slate-500 text-sm">Your enquiry has been submitted successfully.</p>
+                    </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-3">
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
+                        <input
+                          type="text"
+                          placeholder="Your Name"
+                          required
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#ed1c23] focus:ring-1 focus:ring-[#ed1c23] transition-colors"
+                        />
+                      </div>
+
+                      <div className="relative">
+                        <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
+                        <input
+                          type="text"
+                          placeholder="Company Name"
+                          value={formData.company}
+                          onChange={(e) => setFormData({...formData, company: e.target.value})}
+                          className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#ed1c23] focus:ring-1 focus:ring-[#ed1c23] transition-colors"
+                        />
+                      </div>
+
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
+                        <input
+                          type="email"
+                          placeholder="Email Address"
+                          required
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#ed1c23] focus:ring-1 focus:ring-[#ed1c23] transition-colors"
+                        />
+                      </div>
+
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-slate-400" />
+                        <input
+                          type="tel"
+                          placeholder="Phone Number"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#ed1c23] focus:ring-1 focus:ring-[#ed1c23] transition-colors"
+                        />
+                      </div>
+
+                      <div className="relative">
+                        <MessageSquare className="absolute left-3 top-3.5 w-4.5 h-4.5 text-slate-400" />
+                        <textarea
+                          placeholder="Your Message"
+                          rows={3}
+                          value={formData.message}
+                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#ed1c23] focus:ring-1 focus:ring-[#ed1c23] transition-colors resize-none"
+                        />
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="w-full py-3.5 mt-2 bg-[#ed1c23] hover:bg-[#c9141a] text-white font-bold text-sm rounded-xl flex items-center justify-center gap-2 transition-all hover:scale-[1.02] shadow-lg shadow-red-600/20 cursor-pointer"
+                      >
+                        <Send className="w-4 h-4" />
+                        Submit Enquiry
+                      </button>
+                    </form>
+                  )}
                 </div>
-                <div>
-                  <label className="block mb-1">Phone Number *</label>
-                  <input
-                    type="tel"
-                    required
-                    value={formData.phoneNum}
-                    onChange={(e) => setFormData({ ...formData, phoneNum: e.target.value })}
-                    placeholder="+91 XXXXX XXXXX"
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:outline-none font-normal"
-                  />
-                </div>
               </div>
 
-              <div>
-                <label className="block mb-1">Area of Interest *</label>
-                <select
-                  required
-                  value={formData.interestCategory}
-                  onChange={(e) => setFormData({ ...formData, interestCategory: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:outline-none font-normal"
-                >
-                  <option value="">Select Division / Catalog</option>
-                  <option value="nytex">Manufacturing: NYTEX Nylon 6 Filament Yarn (POY/FDY/HOY/DTY/ACY - 2nd Largest in India)</option>
-                  <option value="trading-textiles">Trading: PNP Coated Cloth Fabric (25% Market Share)</option>
-                  <option value="trading-synwood">Trading: Synwood & Haowood Synthetic Wood (10% Market Share, 21 Catalogs)</option>
-                  <option value="trading-ventilators">Trading: HAO Natural Turbo Ventilators (Assembled in India)</option>
-                  <option value="trading-fasteners">Trading: TIE Self-Drilling PEB Roofing Screws</option>
-                  <option value="trading-racking">Trading: PNP Warehouse Racking Storage Systems</option>
-                  <option value="jaquar">Distribution: JAQUAR LIGHTING (Mumbai Bandra to Virar Corridor)</option>
-                  <option value="retail-baginnov">Retail: BAGINNOV 25,000 Sq. Ft. Mall & Corporate Bulk Gifting</option>
-                  <option value="dealer">Dealership & Distribution Application</option>
-                  <option value="downloads">Download Technical Data Sheets & Catalogs</option>
-                  <option value="export">International Sourcing & Export Inquiry (Taipei / Global)</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block mb-1">Specific Requirement / Message *</label>
-                <textarea
-                  rows="3"
-                  required
-                  value={formData.enquiryMessage}
-                  onChange={(e) => setFormData({ ...formData, enquiryMessage: e.target.value })}
-                  placeholder="Please specify denier, GSM, volume requirements, delivery branch, or corporate gifting details..."
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-red-600 focus:outline-none resize-none font-normal"
-                ></textarea>
-              </div>
-
-              <div className="pt-2 flex items-center justify-end gap-3">
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-4 py-2 text-slate-600 hover:text-slate-900 font-semibold"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg shadow-md shadow-red-600/20 flex items-center gap-2 transition-all hover:scale-105"
-                >
-                  <span>Submit Inquiry</span>
-                  <Send className="w-4 h-4" />
-                </button>
-              </div>
-
-            </form>
-          )}
-        </div>
-
+            </div>
+          </div>
+        </motion.div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }
