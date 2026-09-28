@@ -97,30 +97,30 @@ export default function StatsTrustSection() {
       <img 
         src="/assets/stats-bg.webp"
         alt="Background"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none object-[right_30%]"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none object-[65%_top] scale-[1.3] origin-top sm:scale-100 sm:origin-center sm:object-[right_30%]"
       />
       
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 flex">
         
         {/* Container restricted to the Left Side */}
-        <div className="w-full lg:w-[60%]">
+        <div className="w-[85%] min-[375px]:w-[75%] sm:w-full lg:w-[60%]">
           
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-2 sm:gap-x-6 gap-y-6 sm:gap-y-8">
             {stats.map((stat, idx) => (
               <div 
                 key={idx} 
                 className={`flex flex-col items-start text-left transition-all duration-1000 ease-out transform ${
                   isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
-                }`}
+                } ${idx % 2 !== 0 ? 'max-sm:-ml-6' : ''}`}
                 style={{ transitionDelay: `${idx * 150}ms` }}
               >
                 {/* Giant Red Number */}
-                <div className="text-4xl lg:text-6xl font-bold text-[#ed1c23] tracking-tighter mb-1 transform hover:scale-105 transition-transform duration-300">
+                <div className="text-[32px] sm:text-4xl lg:text-6xl font-bold text-[#ed1c23] tracking-tighter mb-1 transform hover:scale-105 transition-transform duration-300 leading-none">
                   <AnimatedNumber targetString={stat.number} />
                 </div>
                 
                 {/* Bold Black Label */}
-                <div className="text-xs lg:text-[14px] font-bold text-slate-900 uppercase tracking-widest leading-snug whitespace-nowrap">
+                <div className="text-[10.5px] min-[375px]:text-[11px] sm:text-xs lg:text-[14px] font-bold text-slate-900 uppercase tracking-wider sm:tracking-widest leading-snug whitespace-normal sm:whitespace-nowrap pr-2 sm:pr-0">
                   {stat.label}
                 </div>
               </div>

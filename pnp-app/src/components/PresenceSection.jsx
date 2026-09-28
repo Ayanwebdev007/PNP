@@ -136,13 +136,13 @@ export default function PresenceSection() {
 
   
   return (
-    <section className="py-20 bg-slate-50 text-slate-900 border-t border-slate-200" id="presence">
+    <section className="relative overflow-hidden py-20 bg-slate-50 text-slate-900 border-t border-slate-200" id="presence">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Narrative Col */}
           <motion.div 
-            className="lg:col-span-3 space-y-6"
+            className="lg:col-span-3 space-y-5 lg:space-y-6 order-1"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -161,12 +161,12 @@ export default function PresenceSection() {
 
             <div className="flex items-center gap-5">
               <div className="flex items-center gap-2.5">
-                <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India" className="w-10 h-7 object-cover rounded shadow-sm border border-slate-200" />
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="India" className="w-10 h-7 object-cover rounded border border-slate-200" />
                 <span className="font-medium text-slate-700 text-base">India</span>
               </div>
               <div className="w-px h-6 bg-slate-200"></div>
               <div className="flex items-center gap-2.5">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/330px-Flag_of_the_Republic_of_China.svg.webp" alt="Taiwan" className="w-10 h-7 object-cover rounded shadow-sm border border-slate-200" />
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/330px-Flag_of_the_Republic_of_China.svg.webp" alt="Taiwan" className="w-10 h-7 object-cover rounded border border-slate-200" />
                 <span className="font-medium text-slate-700 text-base">Taiwan</span>
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function PresenceSection() {
             <div className="pt-2">
               <Link 
                 to="/contact" 
-                className="px-8 py-3.5 bg-[#ed1c23] hover:bg-[#c9141a] text-white font-medium text-sm rounded-lg inline-flex items-center gap-2 shadow-lg shadow-red-600/20 transition-all hover:scale-105"
+                className="px-8 py-3.5 bg-[#ed1c23] hover:bg-[#c9141a] text-white font-medium text-sm rounded-lg inline-flex items-center gap-2 transition-all hover:scale-105"
               >
                 <span>Contact Us</span>
                 <ArrowRight className="w-4 h-4" />
@@ -184,7 +184,7 @@ export default function PresenceSection() {
 
           {/* Interactive Leaflet Map Col */}
           <motion.div 
-            className="lg:col-span-7 relative flex justify-center items-center h-[500px] w-full rounded-2xl overflow-hidden shadow-xl border border-slate-200 z-0"
+            className="lg:col-span-7 relative flex justify-center items-center h-[350px] sm:h-[450px] lg:h-[500px] w-full rounded-2xl overflow-hidden border border-slate-200 z-0 order-3 lg:order-2"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -193,7 +193,7 @@ export default function PresenceSection() {
             {selectedLoc && (
               <button 
                 onClick={() => setSelectedLoc(null)}
-                className="absolute top-4 right-4 z-[400] bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg text-sm font-bold text-slate-700 shadow-md border border-slate-200 hover:bg-slate-100 transition-all cursor-pointer"
+                className="absolute top-4 right-4 z-[400] bg-white/90 backdrop-blur-md px-4 py-2 rounded-lg text-sm font-bold text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all cursor-pointer"
               >
                 Reset Map View
               </button>
@@ -283,7 +283,7 @@ export default function PresenceSection() {
                         href={`https://www.google.com/maps/dir/?api=1&destination=${loc.coordinates[0]},${loc.coordinates[1]}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 w-full bg-white border border-slate-200 hover:border-[#4285F4] text-[#4285F4] py-2 px-4 rounded-lg text-sm font-bold shadow-sm hover:shadow transition-all"
+                        className="flex items-center justify-center gap-2 w-full bg-white border border-slate-200 hover:border-[#4285F4] text-[#4285F4] py-2 px-4 rounded-lg text-sm font-bold transition-all"
                       >
                         <img src="https://upload.wikimedia.org/wikipedia/commons/b/bd/Google_Maps_Logo_2020.svg" alt="Google Maps" className="w-4 h-4" />
                         Directions
@@ -297,27 +297,27 @@ export default function PresenceSection() {
 
           {/* White Locations Card Col */}
           <motion.div 
-            className="lg:col-span-2"
+            className="lg:col-span-2 order-2 lg:order-3 w-full"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           >
-            <div className="bg-white text-slate-900 rounded-2xl p-4 md:p-6 shadow-xl border border-slate-200 space-y-4">
+            <div className="bg-white text-slate-900 rounded-2xl p-4 md:p-6 border border-slate-200 space-y-3 lg:space-y-4">
               <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2">
                 11 STRATEGIC OFFICES
               </h3>
 
-              <div className="flex flex-col gap-1.5 text-xs font-medium">
+              <div className="flex overflow-x-auto lg:flex-col gap-2 lg:gap-1.5 text-xs font-medium pb-2 lg:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {locations.map((loc, i) => {
                   const isSelected = selectedLoc === loc.name;
                   const isHovered = hoveredLoc === loc.name;
                   let bgClass = 'text-slate-600 hover:bg-slate-50 border border-transparent';
                   
                   if (isSelected) {
-                    bgClass = 'bg-[#ed1c23] text-white shadow-md translate-x-2';
+                    bgClass = 'bg-[#ed1c23] text-white -translate-y-1 lg:translate-y-0 lg:translate-x-2';
                   } else if (isHovered) {
-                    bgClass = 'bg-slate-100 text-[#ed1c23] translate-x-1';
+                    bgClass = 'bg-slate-100 text-[#ed1c23] -translate-y-0.5 lg:translate-y-0 lg:translate-x-1';
                   } else if (loc.type === 'hq') {
                     bgClass = 'bg-[#fff100]/20 text-slate-900 border border-yellow-300/50';
                   } else if (loc.type === 'global') {
@@ -327,13 +327,13 @@ export default function PresenceSection() {
                   return (
                     <div 
                       key={i} 
-                      className={`flex items-center gap-2 p-2 rounded-lg transition-all duration-300 cursor-pointer ${bgClass}`}
+                      className={`flex items-center gap-2 p-2 px-3 lg:px-2 shrink-0 lg:shrink rounded-full lg:rounded-lg transition-all duration-300 cursor-pointer ${bgClass}`}
                       onMouseEnter={() => setHoveredLoc(loc.name)}
                       onMouseLeave={() => setHoveredLoc(null)}
                       onClick={() => setSelectedLoc(isSelected ? null : loc.name)}
                     >
                       <MapPin className={`w-3.5 h-3.5 shrink-0 ${isSelected ? 'text-white' : loc.type === 'global' ? 'text-blue-600' : 'text-[#ed1c23]'}`} />
-                      <span className="truncate">{loc.name}</span>
+                      <span className="whitespace-nowrap lg:whitespace-normal truncate">{loc.name}</span>
                     </div>
                   );
                 })}

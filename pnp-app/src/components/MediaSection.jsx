@@ -17,7 +17,7 @@ const mediaArticles = [
     channel: "The Economic Times",
     headline: "The Trendsetter India Needs",
     image: "/assets/media/00fffe_9aa6e92a7fef4c64a00cee75f9ee197d~mv2.webp",
-    logoClass: "h-10 md:h-11"
+    logoClass: "h-7 sm:h-10 md:h-11"
   },
   {
     id: "forbes",
@@ -60,7 +60,7 @@ export default function MediaSection() {
   };
 
   return (
-    <section className="py-20 lg:py-24 bg-slate-50 text-slate-900 border-t border-slate-200 relative" id="media">
+    <section className="relative overflow-hidden pt-10 pb-16 lg:py-24 bg-slate-50 text-slate-900 border-t border-slate-200" id="media">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         
         {/* Header Section */}
@@ -94,7 +94,7 @@ export default function MediaSection() {
 
         {/* Articles Grid */}
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -105,7 +105,7 @@ export default function MediaSection() {
               key={article.id}
               variants={cardVariants}
               onClick={() => setSelectedArticle(article)}
-              className="group relative bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer border border-slate-200 flex flex-col h-[300px] lg:h-[360px]"
+              className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer border border-slate-200 flex flex-col h-[220px] sm:h-[300px] lg:h-[360px]"
             >
               {/* Article Image Background */}
               <div className="absolute inset-0 w-full h-full bg-slate-100 overflow-hidden">
@@ -118,19 +118,19 @@ export default function MediaSection() {
 
               {/* Precise Bottom White Gradient Overlay */}
               <div 
-                className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none" 
+                className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 pointer-events-none" 
                 style={{ background: 'linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)' }}
               />
 
               {/* Hover Zoom Icon */}
-              <div className="absolute top-4 right-4 bg-white/50 backdrop-blur-md p-2 rounded-full text-slate-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:scale-110 shadow-sm">
-                <ZoomIn className="w-5 h-5" />
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 bg-white/50 backdrop-blur-md p-1.5 sm:p-2 rounded-full text-slate-800 opacity-100 lg:opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform lg:scale-90 group-hover:scale-110 shadow-sm">
+                <ZoomIn className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
 
               {/* Content */}
-              <div className="relative mt-auto p-6 md:p-8 flex justify-center items-center">
+              <div className="relative mt-auto p-4 sm:p-6 md:p-8 flex justify-center items-center">
                 {/* Channel Logo */}
-                <img src={article.logo} alt={article.channel} className={`${article.logoClass || 'h-8'} object-contain group-hover:scale-110 transition-transform duration-300 mix-blend-multiply`} />
+                <img src={article.logo} alt={article.channel} className={`${article.logoClass || 'h-5 sm:h-8'} object-contain group-hover:scale-110 transition-transform duration-300 mix-blend-multiply`} />
               </div>
             </motion.div>
           ))}
@@ -191,7 +191,7 @@ export default function MediaSection() {
                 src={selectedArticle.image} 
                 alt={selectedArticle.headline} 
                 onClick={() => setIsZoomed(!isZoomed)}
-                className={`shadow-md transition-all duration-300 ${isZoomed ? 'w-[150%] md:w-[200%] max-w-none cursor-zoom-out' : 'w-full max-w-full h-auto cursor-zoom-in'}`}
+                className={`shadow-md transition-all duration-300 ${isZoomed ? 'w-[300%] sm:w-[150%] md:w-[200%] max-w-none cursor-zoom-out' : 'w-full max-w-full h-auto cursor-zoom-in'}`}
               />
             </div>
           </div>

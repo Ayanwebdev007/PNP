@@ -33,7 +33,7 @@ export default function CtaBannerSection({ onOpenEnquiry }) {
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40"></div>
           
           {/* Content */}
-          <div className="relative z-10 w-full px-8 md:px-14 py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="relative z-10 w-full px-5 py-10 sm:px-8 md:px-14 md:py-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             
             {/* Left: Text Content */}
             <motion.div 
@@ -73,13 +73,13 @@ export default function CtaBannerSection({ onOpenEnquiry }) {
 
             {/* Right: Enquiry Form */}
             <motion.div 
-              className="flex justify-end"
+              className="flex justify-center lg:justify-end w-full"
               initial={{ opacity: 0, x: 50, scale: 0.95 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
             >
-              <div className="bg-white rounded-2xl p-6 md:p-8 max-w-sm w-full shadow-2xl">
+              <div className="bg-white rounded-2xl p-5 sm:p-6 md:p-8 max-w-full sm:max-w-md lg:max-w-sm xl:max-w-md w-full shadow-2xl">
                 <h3 className="text-slate-900 font-bold text-lg mb-1">Quick Enquiry</h3>
                 <p className="text-slate-400 text-xs mb-5">We'll get back to you within 24 hours.</p>
 

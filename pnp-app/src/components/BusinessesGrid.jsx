@@ -75,9 +75,9 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
                 PNP Industrial Group
               </span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-tight">
-              Diversified excellence across <br/>
-              <span className="text-[#ed1c23]">multiple verticals.</span>
+            <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-[1.1] sm:leading-tight">
+              Diversified excellence across <br className="hidden sm:block" />
+              <span className="text-[#ed1c23]"> multiple verticals.</span>
             </h2>
           </div>
           
@@ -88,25 +88,29 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
           <div className="absolute inset-x-0 top-0 bottom-[400px] md:bottom-[480px] pointer-events-none z-30">
             
             {/* High-End Filter Tabs - Yellow Theme */}
-            <div className="sticky top-[80px] md:top-[100px] flex flex-wrap items-center gap-1 mb-14 p-1.5 bg-[#fff100] border border-[#fff100] rounded-3xl md:rounded-full w-fit shadow-sm pointer-events-auto">
-              {tabs.map(tab => {
-                const Icon = tab.icon;
-                const isActive = activeDivision === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => handleTabClick(tab.id)}
-                    className={`px-6 py-3 rounded-2xl md:rounded-full text-[15px] font-normal transition-all duration-300 flex items-center gap-2.5 ${
-                      isActive
-                        ? 'bg-[#ed1c23] text-white'
-                        : 'bg-transparent text-slate-800 hover:text-slate-900 hover:bg-white hover:shadow-sm'
-                    }`}
-                  >
-                    <Icon className={`w-5 h-5 ${isActive ? 'stroke-[2]' : 'stroke-[1.5]'}`} />
-                    {tab.label}
-                  </button>
-                );
-              })}
+            <div className="sticky top-[80px] md:top-[100px] mb-14 pointer-events-auto w-full sm:w-fit bg-[#fff100] border border-[#fff100] rounded-full shadow-sm overflow-hidden">
+              <div className="flex flex-nowrap sm:flex-wrap items-center gap-1 p-1.5 w-full overflow-x-auto sm:overflow-visible touch-pan-x overscroll-x-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                {tabs.map(tab => {
+                  const Icon = tab.icon;
+                  const isActive = activeDivision === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => handleTabClick(tab.id)}
+                      className={`shrink-0 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full text-[13.5px] sm:text-[15px] font-normal transition-all duration-300 flex items-center gap-2 sm:gap-2.5 ${
+                        isActive
+                          ? 'bg-[#ed1c23] text-white shadow-sm'
+                          : 'bg-transparent text-slate-800 hover:text-slate-900 hover:bg-white hover:shadow-sm'
+                      }`}
+                    >
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${isActive ? 'stroke-[2]' : 'stroke-[1.5]'}`} />
+                      {tab.label}
+                    </button>
+                  );
+                })}
+                {/* Tiny spacer to ensure padding isn't collapsed at the end of the scroll on mobile iOS/Android */}
+                <div className="w-[1px] shrink-0 sm:hidden"></div>
+              </div>
             </div>
           </div>
 
@@ -130,14 +134,14 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10 group-hover:from-black/80 transition-colors duration-300" />
                   
                   {/* Card Content */}
-                  <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                  <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-between">
                     
                     {/* Top Left: Brand Logo inside a glassmorphism pill */}
-                    <div className="self-start bg-white/95 backdrop-blur-md px-6 py-4 rounded-2xl shadow-xl shadow-black/20 border border-white/20 transform group-hover:-translate-y-1 transition-transform duration-300">
+                    <div className="self-start bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl shadow-black/20 border border-white/20 transform group-hover:-translate-y-1 transition-transform duration-300">
                       <img 
                         src={item.logo} 
                         alt={item.name} 
-                        className="h-12 md:h-16 max-w-[180px] md:max-w-[260px] object-contain transition-transform duration-300 group-hover:scale-105"
+                        className="h-10 md:h-16 max-w-[140px] md:max-w-[260px] object-contain transition-transform duration-300 group-hover:scale-105"
                         onError={(e) => {
                           if (item.fallback) e.target.src = item.fallback;
                         }}
@@ -145,9 +149,9 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
                     </div>
                     
                     {/* Bottom Right: Explore Button */}
-                    <div className="self-end flex items-center gap-2 text-white text-[15px] font-normal px-8 py-3.5 md:py-4 rounded-full border border-white/80 hover:bg-[#ed1c23] hover:border-[#ed1c23] transition-all backdrop-blur-sm transform group-hover:-translate-y-1 whitespace-nowrap flex-shrink-0">
-                      <span className="lowercase tracking-wide text-lg">explore</span>
-                      <ArrowRight className="w-5 h-5 stroke-[1.5] transform group-hover:translate-x-1 transition-transform" />
+                    <div className="self-end flex items-center gap-1.5 sm:gap-2 text-white text-sm sm:text-[15px] font-normal px-5 py-2.5 sm:px-8 sm:py-3.5 md:py-4 rounded-full border border-white/80 hover:bg-[#ed1c23] hover:border-[#ed1c23] transition-all backdrop-blur-sm transform group-hover:-translate-y-1 whitespace-nowrap flex-shrink-0">
+                      <span className="lowercase tracking-wide text-base sm:text-lg">explore</span>
+                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.5] transform group-hover:translate-x-1 transition-transform" />
                     </div>
                     
                   </div>
@@ -155,8 +159,9 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
               );
 
               // Sticky classes for perfect overlap stacking beneath the filter bar
-              const slideClasses = "block w-full sticky transition-all duration-300";
-              const slideStyle = { top: '180px' };
+              // We use tailwind for top positioning to handle mobile vs desktop sticky heights
+              const slideClasses = "block w-full sticky top-[140px] md:top-[180px] transition-all duration-300";
+              const slideStyle = {};
 
               // Routing logic based on data type
               if (item.pdf) {

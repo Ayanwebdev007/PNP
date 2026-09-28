@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const industries = [
   {
@@ -21,7 +22,7 @@ const industries = [
       { name: "Webbings", brand: "FNP" },
       { name: "Retail Mall", brand: "Baginnov" }
     ],
-    image: "/assets/industries/luggage.webp",
+    image: "https://hips.hearstapps.com/hmg-prod/images/ghk-032024-indexteting-luggage-225-srgb-660daf9f03d7d.jpg?crop=0.668xw:1.00xh;0.167xw,0",
     description: "India's market leader in coated fabrics, powering backpacks, soft luggage, and travel accessories."
   },
   {
@@ -93,7 +94,7 @@ export default function IndustriesServeSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="py-12 lg:py-16 bg-white text-slate-900 min-h-[calc(100vh-80px)] flex flex-col justify-center" id="industries">
+    <section className="relative overflow-hidden pt-12 pb-6 lg:py-16 bg-white text-slate-900 min-h-[calc(100vh-80px)] flex flex-col justify-center" id="industries">
       <div className="max-w-7xl mx-auto px-4 md:px-6 w-full">
         
         {/* Header */}
@@ -115,12 +116,12 @@ export default function IndustriesServeSection() {
           </h2>
         </motion.div>
 
-        {/* Constrained Height Container */}
-        <div className="flex flex-col lg:flex-row gap-8 h-auto lg:h-[55vh] lg:min-h-[450px] lg:max-h-[600px]">
+        {/* DESKTOP VIEW: Split Layout (Hidden on Mobile) */}
+        <div className="hidden lg:flex flex-row gap-8 h-[55vh] min-h-[450px] max-h-[600px]">
           
           {/* Left Side - Interactive List */}
           <motion.div 
-            className="w-full lg:w-5/12 flex flex-col justify-center gap-1 pr-0 lg:pr-4"
+            className="w-5/12 flex flex-col justify-center gap-1 pr-4"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -131,12 +132,12 @@ export default function IndustriesServeSection() {
                 key={ind.id}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => setActiveIndex(index)}
-                className={`group cursor-pointer py-2 lg:py-3 border-b border-slate-100 transition-all duration-300 ${
-                  activeIndex === index ? 'pl-4 lg:pl-6 border-[#ed1c23]' : 'hover:pl-2'
+                className={`group cursor-pointer py-3 border-b border-slate-100 transition-all duration-300 ${
+                  activeIndex === index ? 'pl-6 border-[#ed1c23]' : 'hover:pl-2'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <h3 className={`whitespace-nowrap text-lg md:text-xl lg:text-2xl xl:text-3xl transition-all duration-300 ${
+                  <h3 className={`pr-4 whitespace-nowrap leading-tight text-2xl xl:text-3xl transition-all duration-300 ${
                     activeIndex === index 
                       ? 'font-medium text-[#ed1c23]' 
                       : 'font-light text-slate-400 group-hover:text-slate-600'
@@ -146,35 +147,18 @@ export default function IndustriesServeSection() {
                   
                   {/* Arrow Indicator */}
                   <div className={`transition-all duration-300 ${activeIndex === index ? 'opacity-100 translate-x-0 text-[#ed1c23]' : 'opacity-0 -translate-x-4 text-slate-300 group-hover:opacity-100 group-hover:translate-x-0'}`}>
-                    <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
-                  </div>
-                </div>
-
-                {/* Mobile description & image (visible only on mobile) */}
-                <div className={`lg:hidden overflow-hidden transition-all duration-500 ${activeIndex === index ? 'max-h-[800px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
-                  <div className="w-full h-[200px] rounded-2xl overflow-hidden mb-4 relative">
-                     <img src={ind.image} alt={ind.title} className="w-full h-full object-cover" />
-                  </div>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {ind.products.map((p, i) => (
-                      <div key={i} className="bg-slate-900 pr-3 pl-1 py-1 rounded-lg flex items-center gap-2 shadow-sm border border-slate-800">
-                        <div className="bg-white h-6 px-2 rounded-md flex items-center justify-center">
-                           <img src={getBrandLogo(p.brand)} alt={p.brand} className="h-2.5 object-contain" />
-                        </div>
-                        <span className="text-[9px] font-bold text-white uppercase tracking-wider">{p.name}</span>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </div>
             ))}
           </motion.div>
 
-          {/* Right Side - Full Height Image Crossfade (Desktop Only) */}
+          {/* Right Side - Full Height Image Crossfade */}
           <motion.div 
-            className="hidden lg:block w-full lg:w-7/12 relative rounded-3xl overflow-hidden shadow-2xl bg-slate-100"
+            className="w-7/12 relative rounded-3xl overflow-hidden shadow-2xl bg-slate-100"
             initial={{ opacity: 0, x: 50, scale: 0.95 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: false, amount: 0.3 }}
@@ -195,11 +179,9 @@ export default function IndustriesServeSection() {
                   }`} 
                 />
                 
-                {/* Elegant dark gradient for text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/95 via-slate-900/40 to-transparent" />
                 
-                {/* Overlay Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
+                <div className="absolute bottom-0 left-0 right-0 p-10">
                   <div className={`transform transition-all duration-700 delay-100 ${activeIndex === index ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}>
                     <div className="flex flex-wrap gap-3">
                       {ind.products.map((p, i) => (
@@ -220,6 +202,72 @@ export default function IndustriesServeSection() {
             ))}
           </motion.div>
           
+        </div>
+
+        {/* MOBILE VIEW: Premium Horizontal Swipe Carousel (Hidden on Desktop) */}
+        <div className="lg:hidden w-screen -ml-4 sm:-ml-6 relative">
+          
+          {/* Swipe Hint Arrows Overlay */}
+          <div className="absolute top-[40%] -translate-y-1/2 left-[4vw] right-[4vw] flex justify-between pointer-events-none z-20">
+            <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl animate-pulse">
+              <ChevronLeft className="w-5 h-5 text-white/90 drop-shadow-md" />
+            </div>
+            <div className="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-xl animate-pulse">
+              <ChevronRight className="w-5 h-5 text-white/90 drop-shadow-md" />
+            </div>
+          </div>
+
+          <motion.div 
+            className="flex overflow-x-auto gap-4 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+          >
+            {/* Start spacer for perfect centering */}
+            <div className="w-[calc(10vw-1rem)] sm:w-[calc(50vw-180px-1rem)] shrink-0"></div>
+
+            {industries.map((ind, index) => (
+              <div 
+                key={ind.id} 
+                className="w-[80vw] sm:w-[360px] shrink-0 snap-center rounded-3xl relative overflow-hidden h-[420px] sm:h-[460px] shadow-xl border border-slate-100 flex flex-col justify-end bg-white"
+              >
+                {/* Background Image */}
+                <img src={ind.image} alt={ind.title} className="absolute inset-0 w-full h-full object-cover" />
+                
+                {/* Heavy Dual Gradient Overlay for perfect readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-slate-900/20" />
+
+                {/* Content Area */}
+                <div className="relative z-10 p-6 flex flex-col h-full justify-between">
+                  
+                  <div className="mt-4">
+                    <h3 className="text-white text-[28px] leading-[1.1] font-medium tracking-tight mb-3 drop-shadow-md">
+                      {ind.title}
+                    </h3>
+                    <p className="text-slate-200 text-[13.5px] leading-relaxed line-clamp-4 drop-shadow-sm">
+                      {ind.description}
+                    </p>
+                  </div>
+
+                  {/* Badges at Bottom */}
+                  <div className="flex flex-wrap gap-2 pt-6">
+                    {ind.products.map((p, i) => (
+                      <div key={i} className="bg-black/50 backdrop-blur-md border border-white/20 pr-3.5 pl-1.5 py-1.5 rounded-xl flex items-center gap-2 shadow-lg">
+                        <div className="bg-white h-7 px-2.5 rounded-[9px] flex items-center justify-center shrink-0 shadow-inner">
+                           <img src={getBrandLogo(p.brand)} alt={p.brand} className="h-3 object-contain" />
+                        </div>
+                        <span className="text-[9.5px] font-bold text-white uppercase tracking-wider">{p.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+            
+            {/* End spacer for perfect centering */}
+            <div className="w-[calc(10vw-1rem)] sm:w-[calc(50vw-180px-1rem)] shrink-0"></div>
+          </motion.div>
         </div>
       </div>
     </section>
