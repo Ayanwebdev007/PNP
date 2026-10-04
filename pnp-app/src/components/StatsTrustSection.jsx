@@ -69,10 +69,10 @@ export default function StatsTrustSection() {
 
   const stats = [
     { number: "1997", label: "Established" },
-    { number: "#2", label: "Nylon Yarn Maker" },
     { number: "25%", label: "Coated Fabric Share" },
-    { number: "100%", label: "Green Energy" },
-    { number: "11", label: "Global Offices" }
+    { number: "11", label: "Offices Pan-India" },
+    { number: "4", label: "Business Verticals" },
+    { number: "28+", label: "Years of Trust" }
   ];
 
   useEffect(() => {

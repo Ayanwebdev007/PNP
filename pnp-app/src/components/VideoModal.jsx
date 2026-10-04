@@ -15,7 +15,7 @@ export default function VideoModal({ isOpen, onClose }) {
               CORPORATE FILM
             </span>
             <h3 className="text-sm font-bold text-white mt-1">
-              NYTEX Nylon 6 Yarn Manufacturing | Factory Tour, Bhilad
+              PNP Group | Our Story
             </h3>
           </div>
           <button 
@@ -30,8 +30,8 @@ export default function VideoModal({ isOpen, onClose }) {
         <div className="aspect-video w-full bg-black">
           <iframe 
             className="w-full h-full"
-            src="https://www.youtube.com/embed/2bj_SXejLSI?autoplay=1" 
-            title="PNP Factory Tour & Corporate Documentary" 
+            src="https://www.youtube.com/embed/tHF4B-fGf3g?autoplay=1" 
+            title="PNP Group - Our Story" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

@@ -29,7 +29,7 @@ export default function Hero({ onOpenEnquiry, onOpenVideoModal }) {
             <div className="flex items-center gap-1.5 sm:gap-2 overflow-hidden flex-1 sm:flex-none">
               <Search className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 shrink-0" />
               <p className="text-[10.5px] min-[375px]:text-[11.5px] sm:text-[13px] text-slate-600 font-normal truncate">
-                India's #2 Nylon Yarn & Coated Fabrics Leader
+                Trusted for Quality · Nylon Yarn &amp; Coated Fabrics Since 1997
               </p>
             </div>
 

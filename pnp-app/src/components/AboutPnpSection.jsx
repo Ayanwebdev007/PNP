@@ -37,7 +37,7 @@ export default function AboutPnpSection({ onOpenVideoModal }) {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 1, ease: "easeOut" }}
-        href="https://www.youtube.com/watch?v=2bj_SXejLSI"
+        href="https://www.youtube.com/watch?v=tHF4B-fGf3g"
         target="_blank"
         rel="noopener noreferrer"
         className="block relative lg:absolute z-30 lg:right-0 lg:top-12 lg:bottom-12 w-full lg:w-[55%] h-[320px] sm:h-[400px] md:h-[500px] lg:h-auto bg-slate-900 overflow-hidden rounded-t-[3rem] lg:rounded-t-none lg:rounded-tl-[4rem] lg:rounded-bl-[4rem] shadow-2xl cursor-pointer group flex flex-col justify-end"
@@ -99,7 +99,7 @@ export default function AboutPnpSection({ onOpenVideoModal }) {
               A Legacy of Trust & Market Leadership
             </h3>
             <p className="text-slate-600 leading-relaxed font-medium mb-6 sm:mb-8 text-[15px] sm:text-base">
-              India's No. 1 brand for coated fabrics and highly diversified industrial solutions. Empowering a global client base with unmatched quality and after-sales service since 1997.
+              A trusted name in industrial trading and distribution since 1997. We trade across multiple product categories — from Nylon Yarns and Coated Fabrics to Building Materials and Ventilation — trusted by the market for unmatched quality and after-sales service.
             </p>
             
             <Link

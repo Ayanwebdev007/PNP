@@ -14,7 +14,7 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
   const tabs = [
     { id: 'all', label: 'All Businesses', icon: LayoutGrid },
     { id: 'mfg', label: 'Manufacturing', icon: Factory },
-    { id: 'trading', label: 'Trading & Distributorship', icon: Package },
+    { id: 'trading', label: 'Trading and Distribution', icon: Package },
     { id: 'retail', label: 'Retail', icon: Store }
   ];
 
@@ -72,12 +72,12 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[2px] bg-[#ed1c23]"></div>
               <span className="text-[#ed1c23] font-bold tracking-widest uppercase text-sm">
-                PNP Industrial Group
+                PNP Group
               </span>
             </div>
             <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-[1.1] sm:leading-tight">
               Diversified excellence across <br className="hidden sm:block" />
-              <span className="text-[#ed1c23]"> multiple verticals.</span>
+              <span className="text-[#ed1c23]"> multiple product categories.</span>
             </h2>
           </div>
           

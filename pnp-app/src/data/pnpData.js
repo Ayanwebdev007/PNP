@@ -1,5 +1,5 @@
 export const groupInfo = {
-  name: "PNP Industrial Solutions Group",
+  name: "PNP Group",
   shortName: "PNP Group",
   tagline: "Materials for a Stronger Tomorrow",
   established: 1997,

@@ -96,7 +96,7 @@ export default function Navbar({ onOpenEnquiry }) {
             <div className={dropdownClass}>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> NYTEX Division
+                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> NYTEX Division · Nytex Products
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-600 font-medium">
                   <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Bhilad Plant (Est. 2018)</Link></li>
@@ -114,6 +114,7 @@ export default function Navbar({ onOpenEnquiry }) {
                   <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">FDY: Fully Drawn Yarn</Link></li>
                   <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">HOY: Highly Oriented Yarn</Link></li>
                   <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">DTY: Drawn Textured Yarn</Link></li>
+                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">ACY: Air Covered Yarn</Link></li>
                 </ul>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
@@ -121,7 +122,7 @@ export default function Navbar({ onOpenEnquiry }) {
                   <img src="/assets/businesses/nytex-hq.webp" alt="NYTEX Bhilad Facility" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
                 </div>
                 <span className="text-sm font-bold text-slate-900 block leading-tight">NYTEX Operations</span>
-                <span className="text-xs text-slate-500 block mt-1">#2 Largest in India</span>
+                <span className="text-xs text-slate-500 block mt-1">Powered by Green Energy</span>
               </div>
             </div>
           </div>
