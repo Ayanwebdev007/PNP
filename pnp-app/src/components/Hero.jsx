@@ -9,8 +9,8 @@ export default function Hero({ onOpenEnquiry, onOpenVideoModal }) {
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'url("/assets/about/building.webp")',
-          backgroundPosition: 'center 35%',
+          backgroundImage: 'url("/assets/hero-corporate.webp")',
+          backgroundPosition: 'center center',
           backgroundSize: 'cover'
         }}
       />

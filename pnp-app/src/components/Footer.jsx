@@ -85,7 +85,7 @@ export default function Footer() {
       {/* Bottom Sub-Footer */}
       <div className="border-t border-white/20 bg-[#c9141a] py-4 px-4 text-[11px] text-white/60">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>© 2026 PNP IND. All Rights Reserved.</span>
+          <span>© 2026 PNP Group. All Rights Reserved.</span>
           <div className="flex items-center gap-3">
             <Link to="/contact" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span className="text-white/30">|</span>
