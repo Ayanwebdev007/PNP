@@ -10,10 +10,10 @@ export default function Footer() {
           
           {/* Col 1: Brand (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
-            <Link to="/" className="inline-block">
-              <img src="/assets/footer-logo.webp?v=trendsetters_v1" alt="PNP Logo" className="h-14 w-auto brightness-0 invert" />
+            <Link to="/" className="inline-block bg-white px-4 py-3 rounded-xl shadow-sm">
+              <img src="/assets/logo.webp?v=trendsetters_v1" alt="PNP Logo" className="h-12 w-auto object-contain" />
             </Link>
-            <p className="text-[#fff100] font-semibold uppercase tracking-wider text-[11px]">
+            <p className="text-[#fff100] font-semibold uppercase tracking-wider text-[11px] mt-2">
               BUILDING A STRONGER INDIA SINCE 1997
             </p>
             <p className="text-white/70 text-xs leading-relaxed">
@@ -40,7 +40,7 @@ export default function Footer() {
               Our Businesses
             </h4>
             <ul className="space-y-3 text-sm">
-              <li><Link to="/trading" className="text-white/70 hover:text-[#fff100] transition-colors">PNP Polytex</Link></li>
+
               <li><Link to="/manufacturing" className="text-white/70 hover:text-[#fff100] transition-colors">Nytex</Link></li>
               <li><Link to="/trading" className="text-white/70 hover:text-[#fff100] transition-colors">Synwood</Link></li>
               <li><Link to="/trading" className="text-white/70 hover:text-[#fff100] transition-colors">HAO</Link></li>

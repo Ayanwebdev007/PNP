@@ -96,7 +96,7 @@ export default function Navbar({ onOpenEnquiry }) {
             <div className={dropdownClass}>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> NYTEX Division · Nytex Products
+                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> NYTEX Division
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-600 font-medium">
                   <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Bhilad Plant (Est. 2018)</Link></li>
@@ -107,7 +107,7 @@ export default function Navbar({ onOpenEnquiry }) {
               </div>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Technical Yarns
+                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Nytex Products
                 </h4>
                 <ul className="space-y-3 text-sm text-slate-600 font-medium">
                   <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">POY: Partially Oriented Yarn</Link></li>

@@ -1,253 +1,223 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { featuredProducts } from '../data/pnpData';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function FeaturedProductsSection() {
-  const [activeBrand, setActiveBrand] = useState(featuredProducts[0].brand);
-  const sectionRef = useRef(null);
-  const trackRef = useRef(null);
-  const logoContainerRef = useRef(null);
-
-  const uniqueBrands = [...new Set(featuredProducts.map(p => p.brand))];
-
-  useEffect(() => {
-    if (!logoContainerRef.current) return;
-    const activeBtn = logoContainerRef.current.querySelector(`[data-brand="${activeBrand}"]`);
-    if (activeBtn && window.innerWidth < 1024) {
-      const container = logoContainerRef.current;
-      const scrollLeft = activeBtn.offsetLeft - container.offsetWidth / 2 + activeBtn.offsetWidth / 2;
-      container.scrollTo({ left: scrollLeft, behavior: 'smooth' });
-    }
-  }, [activeBrand]);
-
-  const getBrandLogo = (brandName) => {
-    const product = featuredProducts.find(p => p.brand === brandName);
-    return product ? product.brandLogo : null;
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerWidth < 1024) {
-        if (trackRef.current) trackRef.current.style.transform = `none`;
-        return;
-      }
-      if (!sectionRef.current || !trackRef.current) return;
-      
-      const section = sectionRef.current;
-      const track = trackRef.current;
-      
-      const rect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      
-      // Assuming a standard 80px navbar height. 
-      // The sticky container triggers when the section reaches 80px from the top.
-      const stickyOffset = 80;
-      
-      const totalScrollableDistance = rect.height - viewportHeight + stickyOffset;
-      // Progress starts exactly when rect.top hits stickyOffset
-      let progress = (stickyOffset - rect.top) / totalScrollableDistance;
-      progress = Math.max(0, Math.min(progress, 1));
-      
-      const containerWidth = track.parentElement.offsetWidth;
-      const maxTranslate = Math.max(0, track.scrollWidth - containerWidth);
-      
-      const currentScrollX = maxTranslate * progress;
-      track.style.transform = `translate3d(-${currentScrollX}px, 0, 0)`;
-      
-      const activeIndex = Math.round(progress * (featuredProducts.length - 1));
-      const safeIndex = Math.max(0, Math.min(activeIndex, featuredProducts.length - 1));
-      
-      const newBrand = featuredProducts[safeIndex]?.brand;
-      if (newBrand) {
-        setActiveBrand(prev => (prev !== newBrand ? newBrand : prev));
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (window.innerWidth >= 1024) return;
-    if (!trackRef.current) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = Array.from(trackRef.current.children).indexOf(entry.target);
-            const newBrand = featuredProducts[index]?.brand;
-            if (newBrand) {
-              setActiveBrand(newBrand);
-            }
-          }
-        });
-      },
-      { rootMargin: '-40% 0px -40% 0px', threshold: 0 }
-    );
-
-    Array.from(trackRef.current.children).forEach((child) => observer.observe(child));
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToBrand = (brand) => {
-    if (!sectionRef.current || !trackRef.current) return;
-    
-    const index = featuredProducts.findIndex(p => p.brand === brand);
-    if (index === -1) return;
-    
-    const track = trackRef.current;
-    const card = track.children[index];
-    const targetOffset = card.offsetLeft;
-    
-    if (window.innerWidth < 1024) {
-      const yOffset = -180; 
-      const y = card.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-      return;
-    }
-    
-    const containerWidth = track.parentElement.offsetWidth;
-    const maxTranslate = Math.max(0, track.scrollWidth - containerWidth);
-    
-    if (maxTranslate === 0) return;
-    
-    let targetProgress = targetOffset / maxTranslate;
-    targetProgress = Math.max(0, Math.min(targetProgress, 1));
-    
-    const section = sectionRef.current;
-    const viewportHeight = window.innerHeight;
-    const stickyOffset = 80;
-    const totalScrollableDistance = section.offsetHeight - viewportHeight + stickyOffset;
-    
-    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-    
-    window.scrollTo({
-      top: sectionTop - stickyOffset + targetProgress * totalScrollableDistance,
-      behavior: 'smooth'
-    });
-  };
+// Robust Absolute Crossfade Slide
+const Slide = ({ p, index, direction }) => {
+  const isEven = index % 2 === 0;
+  const cardBg = isEven ? 'bg-white' : 'bg-[#ed1c23] text-white';
 
   return (
-    <>
-      {/* Normal Text Header Section */}
-      <section className="bg-slate-50 text-slate-900 pt-16 sm:pt-24 pb-0 sm:pb-8" id="products">
-        <motion.div 
-          className="max-w-7xl mx-auto px-4 md:px-6"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-            <span className="w-6 sm:w-8 h-[2px] bg-[#ed1c23]"></span>
-            <span className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#ed1c23] uppercase">
-              Our Divisions
-            </span>
-          </div>
-          <h2 className="text-3xl min-[375px]:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight">
-            A brand for every <br className="hidden sm:block" />
-            <span className="text-slate-400">industry need.</span>
-          </h2>
-        </motion.div>
-      </section>
+    <motion.div
+      initial={{ opacity: 0, x: direction === 1 ? 50 : -50 }}
+      animate={{ opacity: 1, x: 0, zIndex: 10 }}
+      exit={{ opacity: 0, x: direction === 1 ? -50 : 50, zIndex: 0 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+      className="absolute inset-0 w-full h-full max-w-6xl mx-auto group"
+    >
+      {/* justify-start keeps the image exactly at the top */}
+      <div className="relative w-full h-full flex flex-col lg:block items-center justify-start">
+        
+        {/* Image Base - 480px tall on desktop */}
+        <div className={`w-full lg:w-[65%] h-[320px] lg:h-[480px] rounded-3xl overflow-hidden relative z-0 shadow-lg shadow-slate-200/50 ${isEven ? 'mr-auto' : 'ml-auto'}`}>
+          <img 
+            src={p.image} 
+            alt={p.title} 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-900/10" />
+        </div>
 
-      {/* Sticky Gallery Section */}
-      <section ref={sectionRef} className="lg:h-[350vh] bg-slate-50 text-slate-900 pb-12 lg:pb-0">
-        {/* Sticky Container clears the 80px navbar and uses pure flex-centering */}
-        <div className="lg:sticky lg:top-[80px] lg:h-[calc(100vh-80px)] w-full flex flex-col justify-start pt-6 lg:pt-0 lg:justify-center lg:overflow-hidden">
-          
-          <div className="max-w-7xl mx-auto px-4 md:px-6 w-full h-full flex flex-col justify-start lg:justify-center">
+        {/* Overlapping Content Card 
+            Desktop: explicitly centered to the 480px image height (top-[240px])
+            Mobile: overlaps image via -mt-16 and expands downwards naturally
+        */}
+        <div className={`lg:absolute lg:top-[240px] lg:-translate-y-1/2 w-[95%] sm:w-[85%] lg:w-[45%] z-10 -mt-16 lg:mt-0 ${isEven ? 'lg:right-0' : 'lg:left-0'}`}>
+          <div className={`${cardBg} p-6 sm:p-10 lg:p-14 rounded-3xl shadow-2xl shadow-black/10 ring-1 ring-black/5`}>
             
-            <div className="flex flex-col lg:flex-row gap-6 lg:gap-16 relative items-start lg:items-center">
-              
-              {/* Left Sidebar (Logos) */}
-              <div 
-                ref={logoContainerRef}
-                className="w-screen -ml-4 px-4 sm:-ml-6 sm:px-6 lg:w-1/4 lg:m-0 lg:p-0 flex lg:flex-col gap-2 sm:gap-4 overflow-x-auto lg:overflow-visible pb-2 sm:pb-4 lg:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] sticky top-[64px] md:top-[64px] lg:static bg-slate-50/95 backdrop-blur-md lg:bg-transparent z-20 pt-4 lg:pt-0 mb-6 lg:mb-0 border-b border-slate-200/50 lg:border-none shadow-sm lg:shadow-none"
-              >
-                {uniqueBrands.map((brand) => (
-                  <button
-                    key={brand}
-                    data-brand={brand}
-                    onClick={() => scrollToBrand(brand)}
-                    className={`relative flex items-center justify-center p-3 sm:p-4 lg:p-6 rounded-xl sm:rounded-2xl transition-all duration-300 shrink-0 lg:shrink border ${
-                      activeBrand === brand 
-                        ? 'bg-white border-transparent shadow-md sm:shadow-xl scale-[1.02]' 
-                        : 'bg-transparent border-transparent hover:bg-white/50 opacity-40 grayscale hover:grayscale-0'
-                    }`}
-                  >
-                    {/* Active Indicator Line (Bottom on Mobile, Left on Desktop) */}
-                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-1 rounded-t-full lg:bottom-auto lg:top-1/2 lg:left-0 lg:-translate-x-0 lg:-translate-y-1/2 lg:w-1.5 lg:h-1/2 bg-[#ed1c23] lg:rounded-t-none lg:rounded-r-full transition-all duration-300 ${activeBrand === brand ? 'opacity-100' : 'opacity-0'}`} />
-                    
-                    <img 
-                      src={getBrandLogo(brand)} 
-                      alt={brand} 
-                      className={`h-6 min-[375px]:h-7 sm:h-8 lg:h-12 object-contain mx-auto`}
-                    />
-                  </button>
-                ))}
+            <div className="mb-5 lg:mb-8">
+              <div className={`inline-block ${isEven ? '' : 'bg-white px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl shadow-sm'}`}>
+                <img 
+                  src={p.brandLogo} 
+                  alt={p.brand} 
+                  className="h-5 sm:h-6 lg:h-8 object-contain" 
+                />
               </div>
-
-              {/* Right Content (Cards) */}
-              <div className="w-full lg:w-3/4 lg:overflow-hidden relative pb-4 lg:pb-0">
-                <div 
-                  ref={trackRef}
-                  className="flex flex-col lg:flex-row gap-8 lg:gap-6 w-full lg:w-max will-change-transform lg:items-center px-0"
-                  style={{ transition: 'transform 0.1s ease-out' }}
-                >
-                  {featuredProducts.map((p) => (
-                    <div 
-                      key={p.id}
-                      className="w-full lg:shrink-0 md:w-[400px] lg:w-[450px]"
-                    >
-                      <Link 
-                        to={p.link}
-                        className="group relative bg-white rounded-2xl sm:rounded-3xl overflow-hidden block h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px] shadow-sm hover:shadow-2xl transition-all duration-500 border border-slate-100"
-                      >
-                        <div className="absolute inset-0">
-                          <img 
-                            src={p.image} 
-                            alt={p.title} 
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent transition-opacity duration-500" />
-                        </div>
-
-                        <div className="absolute top-4 left-4 sm:top-6 sm:left-6 bg-white/90 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-lg">
-                          <img src={p.brandLogo} alt={p.brand} className="h-3 sm:h-4 object-contain" />
-                        </div>
-
-                        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6 lg:p-8 flex flex-col justify-end transform transition-transform duration-500">
-                          <div className="flex items-end justify-between gap-3 sm:gap-4">
-                            <div>
-                              <h3 className="text-lg min-[375px]:text-xl lg:text-3xl font-medium text-white mb-1.5 sm:mb-2 leading-tight group-hover:text-[#ed1c23] transition-colors duration-300">
-                                {p.title}
-                              </h3>
-                              <p className="text-slate-300 font-medium text-xs sm:text-sm line-clamp-2 sm:line-clamp-none">
-                                {p.desc}
-                              </p>
-                            </div>
-                            <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 shrink-0 bg-[#ed1c23] rounded-full flex items-center justify-center text-white opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0 transition-all duration-500 shadow-lg shadow-red-500/30">
-                              <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
             </div>
+
+            <h3 className={`text-[26px] sm:text-3xl lg:text-4xl xl:text-5xl font-medium mb-3 sm:mb-4 lg:mb-6 leading-tight ${isEven ? 'text-slate-900' : 'text-white'}`}>
+              {p.title}
+            </h3>
+            
+            <p className={`text-[15px] sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 lg:mb-10 ${isEven ? 'text-slate-600' : 'text-white/95'}`}>
+              {p.desc}
+            </p>
+            
+            <Link 
+              to={p.link}
+              className={`group/link inline-flex items-center gap-2 sm:gap-3 font-medium transition-colors ${isEven ? 'text-slate-900 hover:text-[#ed1c23]' : 'text-white hover:text-white/80'}`}
+            >
+              <span className={`uppercase tracking-widest text-[13px] sm:text-sm border-b pb-1 transition-colors ${isEven ? 'border-slate-300 group-hover/link:border-[#ed1c23]' : 'border-white/50 group-hover/link:border-white'}`}>
+                Explore Division
+              </span>
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover/link:translate-x-2 transition-transform" />
+            </Link>
+
           </div>
         </div>
-      </section>
-    </>
+        
+      </div>
+    </motion.div>
+  );
+};
+
+export default function FeaturedProductsSection() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const nextSlide = () => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % featuredProducts.length);
+  };
+
+  const prevSlide = () => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + featuredProducts.length) % featuredProducts.length);
+  };
+
+  const handleManualNext = () => {
+    setIsAutoPlaying(false);
+    nextSlide();
+  };
+
+  const handleManualPrev = () => {
+    setIsAutoPlaying(false);
+    prevSlide();
+  };
+
+  const handleDotClick = (idx) => {
+    setIsAutoPlaying(false);
+    setDirection(idx > currentIndex ? 1 : -1);
+    setCurrentIndex(idx);
+  };
+
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 2000); // 2 second interval
+
+    return () => clearInterval(timer);
+  }, [isAutoPlaying]);
+
+  const activeP = featuredProducts[currentIndex];
+
+  return (
+    <section className="bg-slate-50 text-slate-900 py-24 overflow-hidden" id="divisions">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        
+        {/* Header */}
+        <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-16">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-12 h-[2px] bg-[#ed1c23]"></div>
+              <span className="text-[#ed1c23] font-bold tracking-widest uppercase text-sm">
+                Our Divisions
+              </span>
+            </div>
+            <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-[1.1] sm:leading-tight">
+              A brand for every <br />
+              <span className="text-slate-500">industry need.</span>
+            </h2>
+          </motion.div>
+          
+          {/* Restored paragraph to balance the right side */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-slate-500 max-w-sm lg:text-right text-base leading-relaxed lg:pb-2"
+          >
+            Explore our comprehensive range of high-performance products, engineered and distributed to the highest global standards.
+          </motion.p>
+        </div>
+
+        {/* Dynamic Absolute Slider Container */}
+        <motion.div layout className="relative w-full mt-8">
+          
+          {/* Dynamic Spacer: Matches the exact height of the ACTIVE slide perfectly */}
+          <div className="w-full invisible pointer-events-none max-w-6xl mx-auto">
+            <div className="relative w-full flex flex-col lg:block items-center">
+              <div className="w-full lg:w-[65%] h-[320px] lg:h-[480px]"></div>
+              <div className="w-[95%] sm:w-[85%] lg:w-[45%] -mt-16 lg:mt-0 lg:absolute lg:top-0">
+                <div className="p-6 sm:p-10 lg:p-14">
+                  <div className="mb-5 lg:mb-8 h-8"></div>
+                  <h3 className="text-[26px] sm:text-3xl lg:text-4xl xl:text-5xl font-medium mb-3 sm:mb-4 lg:mb-6 leading-tight">
+                    {activeP.title}
+                  </h3>
+                  <p className="text-[15px] sm:text-base lg:text-lg leading-relaxed mb-6 sm:mb-8 lg:mb-10">
+                    {activeP.desc}
+                  </p>
+                  <div className="h-6"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute inset-0">
+            {/* Navigation Arrows - Vertically centered exactly on the image (320px mobile / 480px desktop) */}
+            <div className="absolute top-[160px] lg:top-[240px] -translate-y-1/2 -left-1 -right-1 sm:-left-3 sm:-right-3 md:-left-6 md:-right-6 lg:-left-10 lg:-right-10 xl:-left-16 xl:-right-16 z-30 flex items-center justify-between pointer-events-none">
+              <button 
+                onClick={handleManualPrev}
+                className="pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-[#ed1c23] shadow-lg shadow-[#ed1c23]/30 flex items-center justify-center text-white hover:bg-red-700 hover:shadow-xl transition-all duration-300 hover:scale-110"
+                aria-label="Previous Division"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
+              </button>
+              <button 
+                onClick={handleManualNext}
+                className="pointer-events-auto w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full bg-[#ed1c23] shadow-lg shadow-[#ed1c23]/30 flex items-center justify-center text-white hover:bg-red-700 hover:shadow-xl transition-all duration-300 hover:scale-110"
+                aria-label="Next Division"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7" />
+              </button>
+            </div>
+
+            <AnimatePresence initial={false} custom={direction}>
+              <Slide 
+                key={currentIndex} 
+                p={activeP} 
+                index={currentIndex} 
+                direction={direction} 
+              />
+            </AnimatePresence>
+          </div>
+        </motion.div>
+
+        {/* Progress Dots */}
+        <div className="flex justify-center items-center gap-3 mt-8 lg:mt-12 relative z-20">
+          {featuredProducts.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleDotClick(idx)}
+              className={`h-2.5 rounded-full transition-all duration-500 ${idx === currentIndex ? 'w-10 bg-[#ed1c23]' : 'w-2.5 bg-slate-300 hover:bg-slate-400'}`}
+              aria-label={`Go to division ${idx + 1}`}
+            />
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }

@@ -7,20 +7,20 @@ export default function BusinessDivisions({ onOpenEnquiry }) {
   const icons = [Factory, Shield, Store, ShoppingBag];
 
   return (
-    <section className="py-20 bg-slate-900 text-white relative">
-      <div className="max-w-7xl mx-auto px-4">
+    <section className="py-16 md:py-24 bg-slate-900 text-white relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
-          <span className="text-xs uppercase tracking-widest text-red-500 font-bold">Four Core Pillars of PNP</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold">Diversified Industrial Leadership</h2>
-          <p className="text-slate-400 text-sm md:text-base">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3">
+          <span className="text-[11px] sm:text-xs uppercase tracking-widest text-red-500 font-bold">Four Core Pillars of PNP</span>
+          <h2 className="text-[28px] sm:text-3xl md:text-4xl font-extrabold leading-tight">Diversified Industrial Leadership</h2>
+          <p className="text-slate-400 text-sm md:text-base leading-relaxed px-2">
             From technical nylon yarn manufacturing and coated fabrics leadership to synthetic wood boards, roof ventilation & premier retail megastores.
           </p>
         </div>
 
         {/* Divisions Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {businessDivisions.map((division, index) => {
             const IconComp = icons[index % icons.length];
             return (
@@ -29,7 +29,7 @@ export default function BusinessDivisions({ onOpenEnquiry }) {
                 className="group bg-slate-950/80 rounded-2xl overflow-hidden border border-slate-800 hover:border-red-500/50 transition-all duration-300 shadow-xl flex flex-col justify-between"
               >
                 {/* Image Showcase */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                   <img 
                     src={division.image} 
                     alt={division.title} 
@@ -37,41 +37,41 @@ export default function BusinessDivisions({ onOpenEnquiry }) {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
                   
-                  <div className="absolute top-4 left-4 p-2.5 rounded-xl bg-red-600 text-white shadow-lg">
-                    <IconComp className="w-5 h-5" />
+                  <div className="absolute top-4 left-4 p-2 sm:p-2.5 rounded-xl bg-red-600 text-white shadow-lg">
+                    <IconComp className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                 </div>
 
                 {/* Body Content */}
-                <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
+                <div className="p-5 sm:p-6 md:p-8 space-y-4 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-xs font-semibold text-red-400 uppercase tracking-wider">{division.subtitle}</span>
-                    <h3 className="text-2xl font-bold mt-1 text-white group-hover:text-red-400 transition-colors">
+                    <span className="text-[10px] sm:text-xs font-bold text-red-400 uppercase tracking-widest">{division.subtitle}</span>
+                    <h3 className="text-xl sm:text-2xl font-bold mt-1.5 text-white group-hover:text-red-400 transition-colors leading-tight">
                       {division.title}
                     </h3>
 
-                    <ul className="mt-4 space-y-2">
+                    <ul className="mt-4 sm:mt-5 space-y-2.5">
                       {division.highlights.map((h, i) => (
-                        <li key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
+                        <li key={i} className="flex items-start gap-2.5 text-[13px] sm:text-sm text-slate-300">
                           <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                          <span>{h}</span>
+                          <span className="leading-snug">{h}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="pt-6 border-t border-slate-800/80 flex items-center justify-between gap-4">
+                  <div className="pt-5 sm:pt-6 mt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
                     <Link
                       to={division.link}
-                      className="text-xs font-bold text-white hover:text-red-400 flex items-center gap-1.5 transition-colors"
+                      className="text-[11px] sm:text-xs font-bold text-white hover:text-red-400 flex items-center gap-1.5 transition-colors uppercase tracking-wider"
                     >
-                      <span>Explore Division Details</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <span>Explore Details</span>
+                      <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </Link>
 
                     <button
                       onClick={() => onOpenEnquiry(division.title)}
-                      className="px-4 py-2 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white text-xs font-bold rounded-lg border border-red-500/30 transition-all"
+                      className="px-4 py-2 sm:px-5 sm:py-2.5 bg-red-600/20 hover:bg-red-600 text-red-400 hover:text-white text-[11px] sm:text-xs font-bold rounded-lg border border-red-500/30 transition-all uppercase tracking-wider"
                     >
                       Enquire
                     </button>

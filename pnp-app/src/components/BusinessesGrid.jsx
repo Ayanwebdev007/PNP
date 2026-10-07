@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { businessLogos } from '../data/pnpData';
 import { Link } from 'react-router-dom';
-import { LayoutGrid, Factory, Package, Store, ArrowRight } from 'lucide-react';
+import { LayoutGrid, Factory, Package, Store, ArrowUpRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function BusinessesGrid({ onOpenSynwoodModal }) {
   const [activeDivision, setActiveDivision] = useState('all');
-  const [minH, setMinH] = useState(null);
 
   const filteredLogos = activeDivision === 'all'
     ? businessLogos
@@ -14,61 +14,33 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
   const tabs = [
     { id: 'all', label: 'All Businesses', icon: LayoutGrid },
     { id: 'mfg', label: 'Manufacturing', icon: Factory },
-    { id: 'trading', label: 'Trading and Distribution', icon: Package },
+    { id: 'trading', label: 'Trading & Distribution', icon: Package },
     { id: 'retail', label: 'Retail', icon: Store }
   ];
 
-  const handleTabClick = (tabId) => {
-    if (activeDivision === tabId) return;
-
-    const anchor = document.getElementById('tabs-anchor');
-    const container = document.getElementById('cards-container');
-
-    if (anchor && container) {
-      const offset = window.innerWidth >= 768 ? 100 : 80;
-      const top = anchor.getBoundingClientRect().top + window.scrollY - offset;
-      
-      // If user is scrolled down into the cards
-      if (window.scrollY > top + 20) {
-        // 1. Freeze the container height so the page doesn't instantly shrink
-        setMinH(container.offsetHeight);
-        
-        // 2. Instantly update the cards (they swap instantly without jump)
-        setActiveDivision(tabId);
-        
-        // 3. Smoothly scroll the user back to the top of the tabs
-        window.scrollTo({ top, behavior: 'smooth' });
-        
-        // 4. Once the scroll finishes safely, remove the artificial height.
-        // The page will shrink gracefully below the viewport, without pulling other sections up.
-        setTimeout(() => {
-          setMinH(null);
-        }, 1500); 
-        return;
-      }
-    }
-    
-    // Default instant change if they are already at the top
-    setActiveDivision(tabId);
-  };
-
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-[#fff100]/20 text-slate-900 relative" id="businesses">
+    <section className="py-24 bg-slate-50 text-slate-900 relative overflow-hidden" id="businesses">
       
-      {/* Massive Background Watermark */}
-      <div className="absolute right-0 top-10 pointer-events-none z-0">
+      {/* Enhanced Background Watermark */}
+      <div className="absolute top-0 right-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <img 
           src="/assets/logo.webp?v=trendsetters_v1" 
           alt="" 
-          className="h-[300px] md:h-[400px] lg:h-[500px] w-auto object-contain filter grayscale opacity-[0.05] mix-blend-multiply [clip-path:inset(0_0_32%_0)]"
+          className="absolute right-0 top-20 h-[400px] lg:h-[600px] w-auto object-contain filter grayscale opacity-[0.03] mix-blend-multiply [clip-path:inset(0_0_20%_0)]"
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         
-        {/* Dynamic & Premium Header - Yellow Theme */}
+        {/* Header */}
         <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-8 mb-16">
-          <div className="max-w-3xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[2px] bg-[#ed1c23]"></div>
               <span className="text-[#ed1c23] font-bold tracking-widest uppercase text-sm">
@@ -77,119 +49,138 @@ export default function BusinessesGrid({ onOpenSynwoodModal }) {
             </div>
             <h2 className="text-[32px] sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-slate-900 leading-[1.1] sm:leading-tight">
               Diversified excellence across <br className="hidden sm:block" />
-              <span className="text-[#ed1c23]"> multiple product categories.</span>
+              <span className="text-slate-500"> multiple product categories.</span>
             </h2>
-          </div>
-          
+          </motion.div>
         </div>
 
-        <div className="relative w-full" id="tabs-anchor">
-          {/* Absolute Wrapper for Filter Bar to control its sticky duration precisely */}
-          <div className="absolute inset-x-0 top-0 bottom-[400px] md:bottom-[480px] pointer-events-none z-30">
-            
-            {/* High-End Filter Tabs - Yellow Theme */}
-            <div className="sticky top-[80px] md:top-[100px] mb-14 pointer-events-auto w-full sm:w-fit bg-[#fff100] border border-[#fff100] rounded-full shadow-sm overflow-hidden">
-              <div className="flex flex-nowrap sm:flex-wrap items-center gap-1 p-1.5 w-full overflow-x-auto sm:overflow-visible touch-pan-x overscroll-x-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {tabs.map(tab => {
-                  const Icon = tab.icon;
-                  const isActive = activeDivision === tab.id;
-                  return (
-                    <button
-                      key={tab.id}
-                      onClick={() => handleTabClick(tab.id)}
-                      className={`shrink-0 px-4 py-2.5 sm:px-6 sm:py-3 rounded-full text-[13.5px] sm:text-[15px] font-normal transition-all duration-300 flex items-center gap-2 sm:gap-2.5 ${
-                        isActive
-                          ? 'bg-[#ed1c23] text-white shadow-sm'
-                          : 'bg-transparent text-slate-800 hover:text-slate-900 hover:bg-white hover:shadow-sm'
-                      }`}
-                    >
-                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${isActive ? 'stroke-[2]' : 'stroke-[1.5]'}`} />
-                      {tab.label}
-                    </button>
-                  );
-                })}
-                {/* Tiny spacer to ensure padding isn't collapsed at the end of the scroll on mobile iOS/Android */}
-                <div className="w-[1px] shrink-0 sm:hidden"></div>
-              </div>
-            </div>
+        {/* Filter Tabs - Modernized */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-12 w-full sm:w-fit bg-white/80 backdrop-blur-md border border-slate-200/60 rounded-full overflow-hidden"
+        >
+          <div className="flex flex-nowrap sm:flex-wrap items-center gap-1 p-1.5 w-full overflow-x-auto sm:overflow-visible touch-pan-x overscroll-x-contain [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {tabs.map(tab => {
+              const Icon = tab.icon;
+              const isActive = activeDivision === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveDivision(tab.id)}
+                  className={`relative shrink-0 px-5 py-3 sm:px-6 sm:py-3 rounded-full text-[14px] sm:text-[15px] font-normal transition-colors duration-300 flex items-center gap-2 sm:gap-2.5 overflow-hidden group ${
+                    isActive ? 'text-white' : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  {isActive && (
+                    <motion.div 
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-[#ed1c23] rounded-full z-0"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                  <div className="relative z-10 flex items-center gap-2">
+                    <Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${isActive ? 'stroke-[2.5]' : 'stroke-[2] group-hover:scale-110 transition-transform'}`} />
+                    {tab.label}
+                  </div>
+                </button>
+              );
+            })}
+            {/* Spacer for mobile scroll end */}
+            <div className="w-[1px] shrink-0 sm:hidden"></div>
           </div>
+        </motion.div>
 
-          {/* Premium Brand Cards - Sticky Stack */}
-          <div 
-            id="cards-container"
-            className="flex flex-col gap-8 lg:gap-12 pt-[100px] md:pt-[120px]"
-            style={{ minHeight: minH ? `${minH}px` : undefined }}
-          >
+        {/* Dynamic Bento Grid */}
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          <AnimatePresence mode="popLayout">
             {filteredLogos.map((item, index) => {
+              
+              // Bento Logic: Alternate span-2 and span-1 in a 3-column grid
+              const isAll = activeDivision === 'all';
+              const isWide = isAll ? [0, 3, 4, 7].includes(index) : false;
+              const spanClasses = isWide ? 'md:col-span-2' : 'md:col-span-1';
+
               const tileContent = (
-                <div className="relative w-full h-[400px] md:h-[480px] rounded-2xl overflow-hidden group bg-slate-900 cursor-pointer">
+                <div className="relative w-full h-[380px] md:h-[420px] rounded-[2rem] overflow-hidden group bg-slate-900 cursor-pointer transition-all duration-500">
                   
                   {/* Background Image with Zoom Effect */}
                   <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
+                    className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110 opacity-80 group-hover:opacity-100" 
                     style={{ backgroundImage: `url(${item.image})` }} 
                   />
                   
-                  {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/10 group-hover:from-black/80 transition-colors duration-300" />
+                  {/* Dark Gradient Overlay - Refined */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent group-hover:from-black/95 group-hover:via-black/60 transition-colors duration-500" />
                   
-                  {/* Card Content */}
-                  <div className="absolute inset-0 p-5 sm:p-8 flex flex-col justify-between">
+                  {/* Content Container */}
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between z-10">
                     
-                    {/* Top Left: Brand Logo inside a glassmorphism pill */}
-                    <div className="self-start bg-white/95 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 rounded-xl sm:rounded-2xl shadow-xl shadow-black/20 border border-white/20 transform group-hover:-translate-y-1 transition-transform duration-300">
+                    {/* Top Area: Brand Logo */}
+                    <div className="self-start bg-white/95 backdrop-blur-md px-5 py-3.5 rounded-2xl transform group-hover:-translate-y-1 group-hover:scale-105 transition-all duration-500">
                       <img 
                         src={item.logo} 
                         alt={item.name} 
-                        className="h-10 md:h-16 max-w-[140px] md:max-w-[260px] object-contain transition-transform duration-300 group-hover:scale-105"
+                        className="h-9 md:h-11 max-w-[160px] object-contain"
                         onError={(e) => {
                           if (item.fallback) e.target.src = item.fallback;
                         }}
                       />
                     </div>
                     
-                    {/* Bottom Right: Explore Button */}
-                    <div className="self-end flex items-center gap-1.5 sm:gap-2 text-white text-sm sm:text-[15px] font-normal px-5 py-2.5 sm:px-8 sm:py-3.5 md:py-4 rounded-full border border-white/80 hover:bg-[#ed1c23] hover:border-[#ed1c23] transition-all backdrop-blur-sm transform group-hover:-translate-y-1 whitespace-nowrap flex-shrink-0">
-                      <span className="lowercase tracking-wide text-base sm:text-lg">explore</span>
-                      <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 stroke-[1.5] transform group-hover:translate-x-1 transition-transform" />
+                    {/* Bottom Area: Description & Action */}
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="max-w-md">
+                          <h3 className="text-white font-medium text-2xl md:text-3xl tracking-tight mb-2 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                            {item.name}
+                          </h3>
+                          <p className="text-slate-300/90 text-sm md:text-base font-light leading-relaxed group-hover:text-white transition-colors duration-300 line-clamp-2">
+                            {item.desc}
+                          </p>
+                      </div>
+
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-white/15 group-hover:bg-[#ed1c23] backdrop-blur-md transition-all duration-500 group-hover:rotate-45 shrink-0">
+                        <ArrowUpRight className="w-5 h-5 text-white" />
+                      </div>
                     </div>
                     
                   </div>
                 </div>
               );
 
-              // Sticky classes for perfect overlap stacking beneath the filter bar
-              // We use tailwind for top positioning to handle mobile vs desktop sticky heights
-              const slideClasses = "block w-full sticky top-[140px] md:top-[180px] transition-all duration-300";
-              const slideStyle = {};
-
-              // Routing logic based on data type
-              if (item.pdf) {
-                return (
-                  <a key={item.id} href={item.pdf} download title={item.name} className={slideClasses} style={slideStyle}>
-                    {tileContent}
-                  </a>
-                );
-              }
-
-              if (item.external) {
-                return (
-                  <a key={item.id} href={item.link} target="_blank" rel="noopener noreferrer" title={item.name} className={slideClasses} style={slideStyle}>
-                    {tileContent}
-                  </a>
-                );
-              }
-
               return (
-                <Link key={item.id} to={item.link || '#'} title={item.name} className={slideClasses} style={slideStyle}>
-                  {tileContent}
-                </Link>
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
+                  key={item.id}
+                  className={spanClasses}
+                >
+                  {item.pdf ? (
+                    <a href={item.pdf} download title={item.name} className="block h-full">
+                      {tileContent}
+                    </a>
+                  ) : item.external ? (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" title={item.name} className="block h-full">
+                      {tileContent}
+                    </a>
+                  ) : (
+                    <Link to={item.link || '#'} title={item.name} className="block h-full">
+                      {tileContent}
+                    </Link>
+                  )}
+                </motion.div>
               );
             })}
-          </div>
-        </div>
+          </AnimatePresence>
+        </motion.div>
 
       </div>
     </section>
   );
 }
+
