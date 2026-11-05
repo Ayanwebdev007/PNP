@@ -2,9 +2,33 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 
+const aboutMobileGroups = [
+  {
+    title: 'Company Profile',
+    to: '/about',
+    links: [
+      { label: 'Company Overview', to: '/about' },
+      { label: 'Leadership & Vision', to: '/about#leadership' },
+      { label: 'Corporate Values', to: '/about#values' },
+      { label: 'Milestones Since 1997', to: '/about#milestones' },
+    ],
+  },
+  {
+    title: 'Pan-India Reach',
+    to: '/about/pan-india-reach',
+    links: [
+      { label: '11 Nationwide Branches', to: '/about/pan-india-reach#branches' },
+      { label: '20+ Lakh Sq. Ft. Storage', to: '/about/pan-india-reach#infrastructure' },
+      { label: 'Taipei Global Office', to: '/about/pan-india-reach#taipei' },
+      { label: 'Distribution Network', to: '/about/pan-india-reach#distribution' },
+    ],
+  },
+];
+
 export default function Navbar({ onOpenEnquiry }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -17,6 +41,7 @@ export default function Navbar({ onOpenEnquiry }) {
 
   useEffect(() => {
     setMobileMenuOpen(false);
+    setMobileAboutOpen(false);
   }, [location]);
 
   const navLinkClass = (path) => `
@@ -56,10 +81,10 @@ export default function Navbar({ onOpenEnquiry }) {
             </Link>
             <div className={dropdownClass}>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Company Profile
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
+                <Link to="/about" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  Company Profile <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
                   <li><Link to="/about" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Company Overview</Link></li>
                   <li><Link to="/about#leadership" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Leadership & Vision</Link></li>
                   <li><Link to="/about#values" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Corporate Values</Link></li>
@@ -67,14 +92,14 @@ export default function Navbar({ onOpenEnquiry }) {
                 </ul>
               </div>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Pan-India Reach
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/contact" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">11 Nationwide Branches</Link></li>
-                  <li><Link to="/contact" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">20+ Lakh Sq. Ft. Storage</Link></li>
-                  <li><Link to="/contact" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Taipei Global Office</Link></li>
-                  <li><Link to="/contact" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Distribution Network</Link></li>
+                <Link to="/about/pan-india-reach" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  Pan-India Reach <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                  <li><Link to="/about/pan-india-reach#branches" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">11 Nationwide Branches</Link></li>
+                  <li><Link to="/about/pan-india-reach#infrastructure" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">20+ Lakh Sq. Ft. Storage</Link></li>
+                  <li><Link to="/about/pan-india-reach#taipei" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Taipei Global Office</Link></li>
+                  <li><Link to="/about/pan-india-reach#distribution" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Distribution Network</Link></li>
                 </ul>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
@@ -88,11 +113,11 @@ export default function Navbar({ onOpenEnquiry }) {
           </div>
 
           {/* Manufacturing Mega Menu */}
-          <div className="relative group">
-            <Link to="/manufacturing" className={navLinkClass('/manufacturing')}>
+          <div className="relative group pointer-events-none">
+            <span className={navLinkClass('/manufacturing')}>
               <span>Manufacturing</span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
-            </Link>
+            </span>
             <div className={dropdownClass}>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
@@ -128,11 +153,11 @@ export default function Navbar({ onOpenEnquiry }) {
           </div>
 
           {/* Trading Mega Menu */}
-          <div className="relative group">
-            <Link to="/trading" className={navLinkClass('/trading')}>
+          <div className="relative group pointer-events-none">
+            <span className={navLinkClass('/trading')}>
               <span>Trading</span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
-            </Link>
+            </span>
             <div className={dropdownClass}>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
@@ -167,11 +192,11 @@ export default function Navbar({ onOpenEnquiry }) {
           </div>
 
           {/* Retail Mega Menu */}
-          <div className="relative group">
-            <Link to="/retail" className={navLinkClass('/retail')}>
+          <div className="relative group pointer-events-none">
+            <span className={navLinkClass('/retail')}>
               <span>Retail</span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
-            </Link>
+            </span>
             <div className={dropdownClass}>
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
@@ -205,17 +230,17 @@ export default function Navbar({ onOpenEnquiry }) {
             </div>
           </div>
 
-          <Link to="/application" className={navLinkClass('/application')}>
+          <span className={`${navLinkClass('/application')} pointer-events-none`}>
             Application
-          </Link>
+          </span>
 
-          <Link to="/certifications" className={navLinkClass('/certifications')}>
+          <span className={`${navLinkClass('/certifications')} pointer-events-none`}>
             Awards
-          </Link>
+          </span>
 
-          <Link to="/contact" className={navLinkClass('/contact')}>
+          <span className={`${navLinkClass('/contact')} pointer-events-none`}>
             Contact
-          </Link>
+          </span>
         </nav>
 
         {/* Action Button & Mobile Toggle */}
@@ -240,15 +265,43 @@ export default function Navbar({ onOpenEnquiry }) {
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 text-sm animate-fade-in shadow-inner absolute w-full left-0 top-full">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 text-sm animate-fade-in shadow-inner absolute w-full left-0 top-full max-h-[calc(100vh-5rem)] overflow-y-auto">
           <Link to="/" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Home</Link>
-          <Link to="/about" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">About Us</Link>
-          <Link to="/manufacturing" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Manufacturing (NYTEX)</Link>
-          <Link to="/trading" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Trading & Own Brands</Link>
-          <Link to="/retail" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Retail (BAGINNOV Mall)</Link>
-          <Link to="/application" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Application</Link>
-          <Link to="/certifications" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Certifications & Awards</Link>
-          <Link to="/contact" className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors">Contact Us</Link>
+          <div className="border-b border-slate-100">
+            <button
+              type="button"
+              onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+              aria-expanded={mobileAboutOpen}
+              className="w-full flex items-center justify-between py-2.5 px-4 text-slate-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+            >
+              <span>About Us</span>
+              <ChevronDown className={`w-4 h-4 opacity-60 transition-transform duration-300 ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileAboutOpen && (
+              <div className="px-4 pt-2 pb-3 space-y-4">
+                {aboutMobileGroups.map((group) => (
+                  <div key={group.title}>
+                    <Link to={group.to} className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] flex items-center gap-2">
+                      {group.title} <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                    <ul className="mt-2 border-l-2 border-[#ed1c23]/30 pl-3 ml-0.5 text-slate-600 font-medium">
+                      {group.links.map((link) => (
+                        <li key={link.label}>
+                          <Link to={link.to} className="block py-1.5 hover:text-[#ed1c23] transition-colors">{link.label}</Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Manufacturing (NYTEX)</span>
+          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Trading & Own Brands</span>
+          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Retail (BAGINNOV Mall)</span>
+          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Application</span>
+          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Certifications & Awards</span>
+          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Contact Us</span>
         </div>
       )}
     </header>

@@ -17,6 +17,17 @@ export const groupInfo = {
   ]
 };
 
+// NYTEX USPs: wording from PNPIND's email (Panav Kaushik, 11 Sep 2026), listed under Manufacturing Division.
+export const nytexUsps = [
+  { title: 'Quality', text: 'Our first priority is to make the best products and deliver the best service, on time.' },
+  { title: 'Readily Available Inventory of Huge Variety', text: 'We always have products available for our customers.' },
+  { title: 'Customer Oriented', text: 'We can make products tailored to our customers’ needs.' },
+  { title: 'Last Born Child', subtitle: 'Latest Machinery in India', text: 'We have the latest machinery in India — Barmag machines from Germany.' },
+  { title: 'Strong Distribution', text: '10 offices in India and 1 in Taipei, Taiwan.' },
+  { title: 'New & Innovative Products', text: 'We bring new and innovative products from the rest of the world to India.' },
+  { title: 'Use of Green Energy', text: 'We use renewable energy from windmill and solar for our factory.' },
+];
+
 export const pdfCatalogues = [
   { title: "BAGINNOV Retail Catalog 2026", file: "/BAGINNOV 2026 .pdf", category: "Retail & Gifting", size: "6.3 MB" },
   { title: "NYTEX Nylon Yarns Technical Data", file: "/Nytex 2026 .pdf", category: "Manufacturing", size: "1.1 MB" },
@@ -75,7 +86,7 @@ export const businessLogos = [
   { id: "tie", name: "TIE Fasteners", division: "trading", logo: "/assets/businesses/logo-tie.webp", image: "/assets/products/roofing-screws-hq.webp", desc: "Industrial Roofing Screws & Fasteners", pdf: "/Tie 2026 New .pdf" },
   { id: "baginnov", name: "BAGINNOV", division: "retail", logo: "/assets/businesses/logo-baginnov.webp", image: "/assets/businesses/baginnov-hq.webp", desc: "25,000 Sq. Ft. Iconic Luggage Mall", link: "https://www.baginnov.in", external: true },
   { id: "haowood", name: "HAOWOOD", division: "trading", logo: "/assets/businesses/logo-haowood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Sustainable Building Materials", link: "/trading#categories" },
-  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvFGRcWGp50JVPDTyFW35o9Tc2BEDV0KAqbS2MV3JKKdeq0EeF9zrmx3Qe&s=10", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Authorized Commercial Distributors", pdf: "/Jaquar 2062.pdf" }
+  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "/assets/businesses/logo-jaquar.jpg", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Authorized Commercial Distributors", pdf: "/Jaquar 2062.pdf" }
 ];
 
 export const featuredProducts = [

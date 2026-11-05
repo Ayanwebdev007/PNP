@@ -8,6 +8,7 @@ import SynwoodModal from './components/SynwoodModal';
 
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
+import PanIndiaReachPage from './pages/PanIndiaReachPage';
 import ManufacturingPage from './pages/ManufacturingPage';
 import TradingPage from './pages/TradingPage';
 import RetailPage from './pages/RetailPage';
@@ -91,7 +92,16 @@ export default function App() {
                 />
               } 
             />
-            {/* FORCE ANY OTHER URL TO IMMEDIATELY REDIRECT TO HOME */}
+            <Route path="/about" element={<AboutPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/about/pan-india-reach" element={<PanIndiaReachPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/manufacturing" element={<ManufacturingPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/trading" element={<TradingPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/retail" element={<RetailPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/application" element={<ApplicationsPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/applications" element={<ApplicationsPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/certifications" element={<CertificationsPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/downloads" element={<DownloadsPage />} />
+            <Route path="/contact" element={<ContactPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>
