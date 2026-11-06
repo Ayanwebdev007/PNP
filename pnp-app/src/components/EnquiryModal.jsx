@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Send, User, Mail, Phone, Building2, MessageSquare, CheckCircle2, Handshake, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export default function EnquiryModal({ isOpen, onClose }) {
+export default function EnquiryModal({ isOpen, onClose, initialProduct = '' }) {
   const [formData, setFormData] = useState({
     name: '', company: '', email: '', phone: '', message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (isOpen && initialProduct) {
+      setFormData((prev) => ({ ...prev, message: `I would like to enquire about ${initialProduct}.` }));
+    }
+  }, [isOpen, initialProduct]);
 
   if (!isOpen) return null;
 

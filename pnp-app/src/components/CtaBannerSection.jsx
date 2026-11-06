@@ -20,7 +20,7 @@ export default function CtaBannerSection({ onOpenEnquiry }) {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-16">
         
         {/* Full-width image banner with overlay */}
-        <div className="relative rounded-3xl overflow-hidden shadow-2xl min-h-[480px] flex items-center">
+        <div className="relative rounded-3xl overflow-hidden min-h-[480px] flex items-center">
           
           {/* Background Image */}
           <img 

@@ -9,7 +9,7 @@ export const groupInfo = {
   phone: "+91 22 4014 0181",
   email: "sales@pnpind.com",
   stats: [
-    { label: "Nylon Yarn Market Position", value: "#2 Largest", subtext: "In India (NYTEX)" },
+    { label: "Nylon Filament Yarn", value: "5 Types", subtext: "NYTEX" },
     { label: "Fabric Market Share", value: "25%", subtext: "In India" },
     { label: "Synwood Market Share", value: "10%", subtext: "In India" },
     { label: "Green Energy", value: "100%", subtext: "Wind & Solar" },
@@ -19,12 +19,12 @@ export const groupInfo = {
 
 // NYTEX USPs: wording from PNPIND's email (Panav Kaushik, 11 Sep 2026), listed under Manufacturing Division.
 export const nytexUsps = [
-  { title: 'Quality', text: 'Our first priority is to make the best products and deliver the best service, on time.' },
-  { title: 'Readily Available Inventory of Huge Variety', text: 'We always have products available for our customers.' },
-  { title: 'Customer Oriented', text: 'We can make products tailored to our customers’ needs.' },
-  { title: 'Last Born Child', subtitle: 'Latest Machinery in India', text: 'We have the latest machinery in India — Barmag machines from Germany.' },
+  { title: 'Quality', text: 'Our first priority is to make the best products and deliver the best service on time.' },
+  { title: 'Ready Inventory', text: 'We always have a huge variety of products available for our customers.' },
+  { title: 'Customer Oriented', text: 'We can make products tailored to consumer needs.' },
+  { title: 'Last Born Child', subtitle: 'Latest Machinery in India', text: 'We have the latest machinery in India (Barmag machines from Germany).' },
   { title: 'Strong Distribution', text: '10 offices in India and 1 in Taipei, Taiwan.' },
-  { title: 'New & Innovative Products', text: 'We bring new and innovative products from the rest of the world to India.' },
+  { title: 'New and Innovative Products', text: 'New and innovative products from the rest of the world to India.' },
   { title: 'Use of Green Energy', text: 'We use renewable energy from windmill and solar for our factory.' },
 ];
 
@@ -79,14 +79,14 @@ export const synwoodCatalogues = [
 ];
 
 export const businessLogos = [
-  { id: "nytex", name: "NYTEX", division: "mfg", logo: "/assets/businesses/logo-nytex.webp", image: "/assets/businesses/nytex-hq-new.webp", desc: "India's #2 Nylon Yarn Maker", link: "/manufacturing" },
+  { id: "nytex", name: "NYTEX", division: "mfg", logo: "/assets/businesses/logo-nytex.webp", image: "/assets/businesses/nytex-hq-new.webp", desc: "Nylon Filament Yarn, Made for Fine Fabric", link: "/manufacturing" },
   { id: "pnp", name: "PNP Polytex", division: "trading", logo: "/assets/businesses/logo-pnp.webp", image: "/assets/products/luggage-fabric-hq.webp", desc: "25% Market Share in Coated Fabrics", link: "/trading#categories" },
   { id: "synwood", name: "Synwood", division: "trading", logo: "/assets/businesses/logo-synwood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Premium Synthetic Wood Solutions", link: "https://www.pnpind.com/synthetic-wood-synwood", external: true },
   { id: "hao", name: "HAO Air Ventilators", division: "trading", logo: "/assets/businesses/logo-hao.webp", image: "/assets/products/turbo-ventilators-hq.webp", desc: "High-Performance Air Ventilation", pdf: "/Hao-2026 new.pdf" },
   { id: "tie", name: "TIE Fasteners", division: "trading", logo: "/assets/businesses/logo-tie.webp", image: "/assets/products/roofing-screws-hq.webp", desc: "Industrial Roofing Screws & Fasteners", pdf: "/Tie 2026 New .pdf" },
   { id: "baginnov", name: "BAGINNOV", division: "retail", logo: "/assets/businesses/logo-baginnov.webp", image: "/assets/businesses/baginnov-hq.webp", desc: "25,000 Sq. Ft. Iconic Luggage Mall", link: "https://www.baginnov.in", external: true },
   { id: "haowood", name: "HAOWOOD", division: "trading", logo: "/assets/businesses/logo-haowood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Sustainable Building Materials", link: "/trading#categories" },
-  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "/assets/businesses/logo-jaquar.jpg", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Authorized Commercial Distributors", pdf: "/Jaquar 2062.pdf" }
+  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "/assets/businesses/logo-jaquar.webp", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Authorized Commercial Distributors", pdf: "/Jaquar 2062.pdf" }
 ];
 
 export const featuredProducts = [

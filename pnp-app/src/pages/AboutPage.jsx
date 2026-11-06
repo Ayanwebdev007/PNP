@@ -32,7 +32,7 @@ const keyFacts = [
 ];
 
 const overviewPoints = [
-  { title: 'Who We Are', text: 'India’s No. 1 coated cloth brand and its #2 nylon yarn maker.' },
+  { title: 'Who We Are', text: 'India’s No. 1 coated cloth brand and the maker of NYTEX nylon filament yarn.' },
   { title: 'What We Do', text: 'Yarn, fabrics, synthetic wood, ventilators, roofing screws, racking and retail.' },
   { title: 'Whom We Serve', text: 'Industries and customers across India and abroad.' },
   { title: 'How We Add Value', text: 'Quality products, unmatched service, fair and transparent policies.' },
@@ -51,7 +51,7 @@ const divisions = [
       { logo: L('haowood'), name: 'Haowood', small: true, note: 'Synthetic wood' },
       { logo: L('hao'), name: 'HAO', small: true, note: 'Air ventilators' },
       { logo: L('tie'), name: 'TIE', note: 'Roofing screws' },
-      { logo: '/assets/businesses/logo-jaquar.jpg', name: 'Jaquar', note: 'Lighting distribution' },
+      { logo: '/assets/businesses/logo-jaquar.webp', name: 'Jaquar', note: 'Lighting distribution' },
     ],
   },
   {
@@ -404,7 +404,7 @@ export default function AboutPage({ onOpenEnquiry }) {
               <div className="absolute -top-3 sm:-top-4 -right-3 sm:-right-4 w-full h-full rounded-3xl border-2 border-[#ed1c23]" />
               <div className="absolute -bottom-3 sm:-bottom-5 -left-3 sm:-left-5 w-20 sm:w-28 h-20 sm:h-28 rounded-3xl bg-[#fff100]" />
               <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[360px] sm:h-[420px] lg:h-[480px] bg-slate-200">
-                <img src="/assets/about/promoter.avif" alt="Mr. Pawan Kumar Kaushik, Founder & Leader, PNP Group" className="absolute inset-0 w-full h-full object-cover object-top scale-[1.8] origin-[100%_30%]" />
+                <img src="/assets/about/promoter.webp" alt="Mr. Pawan Kumar Kaushik, Founder & Leader, PNP Group" className="absolute inset-0 w-full h-full object-cover object-top scale-[1.8] origin-[100%_30%]" />
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black via-black/70 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
                   <div className="text-white text-xl sm:text-2xl font-bold">Mr. Pawan Kumar Kaushik</div>

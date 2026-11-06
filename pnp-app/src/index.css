@@ -63,3 +63,8 @@
 .leaflet-container {
   background-color: #f1f5f9 !important; /* Clean sea color */
 }
+
+@keyframes nytex-loop {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

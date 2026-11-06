@@ -84,7 +84,7 @@ const infrastructure = [
 const distribution = [
   { icon: Network, title: 'All-India Sales Network', text: 'The only coated cloth company with a sales network across all of India.', img: 'https://images.unsplash.com/photo-1761133381018-aed5063d22fe?auto=format&fit=crop&w=1200&q=75' },
   { icon: Boxes, title: 'Ready Inventory', text: 'A huge variety stocked in our own warehouses, ready when you need it.', img: 'https://images.unsplash.com/photo-1644079446600-219068676743?auto=format&fit=crop&w=1200&q=75' },
-  { icon: Globe2, title: 'Global Sourcing', text: 'New and innovative products from the rest of the world, brought to India.', img: '/assets/presence/global-sourcing.jpg' },
+  { icon: Globe2, title: 'Global Sourcing', text: 'New and innovative products from the rest of the world, brought to India.', img: '/assets/presence/global-sourcing.webp' },
   { icon: Handshake, title: 'Jaquar Lighting, Mumbai', text: 'Authorised distributor of Jaquar Lighting from Bandra to Virar.', img: '/assets/businesses/jaquar-lighting-hq.webp' },
 ];
 
@@ -188,7 +188,7 @@ export default function PanIndiaReachPage({ onOpenEnquiry }) {
 
       {/* TAIPEI — full-width map with floating card */}
       <section id="taipei" className="relative overflow-hidden lg:overflow-visible scroll-mt-24">
-        <motion.img initial={{ scale: 1.12, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} src="/assets/presence/taipei.jpg" alt="Taipei skyline with Taipei 101" className="absolute inset-0 w-full h-full object-cover object-[70%_center]" />
+        <motion.img initial={{ scale: 1.12, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }} viewport={{ once: false, amount: 0.2 }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} src="/assets/presence/taipei.webp" alt="Taipei skyline with Taipei 101" className="absolute inset-0 w-full h-full object-cover object-[70%_center]" />
         <div className="absolute inset-0 bg-black/65 sm:bg-transparent sm:bg-gradient-to-r sm:from-black/85 sm:via-black/60 sm:to-black/10" />
         <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-14 sm:py-20 lg:py-28">
           <motion.div {...reveal()} className="max-w-xl text-white">

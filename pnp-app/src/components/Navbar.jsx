@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowRight, Download } from 'lucide-react';
 
 const aboutMobileGroups = [
   {
@@ -25,10 +25,16 @@ const aboutMobileGroups = [
   },
 ];
 
+const manufacturingMobileLinks = [
+  { label: 'NYTEX Division', to: '/manufacturing/nytex-division' },
+  { label: 'NYTEX Products', to: '/manufacturing/nytex-products' },
+];
+
 export default function Navbar({ onOpenEnquiry }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const [mobileManufacturingOpen, setMobileManufacturingOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -42,12 +48,13 @@ export default function Navbar({ onOpenEnquiry }) {
   useEffect(() => {
     setMobileMenuOpen(false);
     setMobileAboutOpen(false);
+    setMobileManufacturingOpen(false);
   }, [location]);
 
   const navLinkClass = (path) => `
     px-4 py-2 rounded-full font-medium transition-all duration-300 flex items-center gap-1.5
-    ${location.pathname === path 
-      ? 'bg-red-50 text-[#ed1c23]' 
+    ${location.pathname === path || location.pathname.startsWith(`${path}/`)
+      ? 'bg-red-50 text-[#ed1c23]'
       : 'text-slate-700 hover:bg-slate-100 hover:text-slate-900'}
   `;
 
@@ -113,38 +120,38 @@ export default function Navbar({ onOpenEnquiry }) {
           </div>
 
           {/* Manufacturing Mega Menu */}
-          <div className="relative group pointer-events-none">
-            <span className={navLinkClass('/manufacturing')}>
+          <div className="relative group">
+            <Link to="/manufacturing/nytex-division" className={navLinkClass('/manufacturing')}>
               <span>Manufacturing</span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
-            </span>
+            </Link>
             <div className={dropdownClass}>
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> NYTEX Division
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Bhilad Plant (Est. 2018)</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">German Barmag Machinery</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">100% Wind & Solar Energy</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">7 Leadership USPs</Link></li>
+              <div className="flex flex-col items-start h-full">
+                <Link to="/manufacturing/nytex-division" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  NYTEX Division <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="mb-6 space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                  <li><Link to="/manufacturing/nytex-division#plant" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Bhilad Plant (Est. 2018)</Link></li>
+                  <li><Link to="/manufacturing/nytex-division#machinery" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Oerlikon Barmag Machinery</Link></li>
+                  <li><Link to="/manufacturing/nytex-division#green-energy" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Wind & Solar Energy</Link></li>
                 </ul>
+                <a href="/Nytex 2026 .pdf" download className="mt-auto px-6 py-3 bg-[#ed1c23] hover:bg-[#c9141a] text-white text-sm font-medium rounded-full inline-flex items-center gap-2 transition-colors"><Download className="w-4 h-4" /> Download Catalogue</a>
               </div>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Nytex Products
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">POY: Partially Oriented Yarn</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">FDY: Fully Drawn Yarn</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">HOY: Highly Oriented Yarn</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">DTY: Drawn Textured Yarn</Link></li>
-                  <li><Link to="/manufacturing" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">ACY: Air Covered Yarn</Link></li>
+                <Link to="/manufacturing/nytex-products" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  NYTEX Products <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                  <li><Link to="/manufacturing/nytex-products#poy" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">POY: Partially Oriented Yarn</Link></li>
+                  <li><Link to="/manufacturing/nytex-products#fdy" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">FDY: Fully Drawn Yarn</Link></li>
+                  <li><Link to="/manufacturing/nytex-products#hoy" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">HOY: Highly Oriented Yarn</Link></li>
+                  <li><Link to="/manufacturing/nytex-products#dty" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">DTY: Draw Textured Yarn</Link></li>
+                  <li><Link to="/manufacturing/nytex-products#acy" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">ACY: Air Covered Yarn</Link></li>
                 </ul>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
                 <div className="overflow-hidden rounded-lg mb-3">
-                  <img src="/assets/businesses/nytex-hq.webp" alt="NYTEX Bhilad Facility" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
+                  <img src="/assets/manufacturing/plant-building.webp" alt="NYTEX Bhilad Facility" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
                 </div>
                 <span className="text-sm font-bold text-slate-900 block leading-tight">NYTEX Operations</span>
                 <span className="text-xs text-slate-500 block mt-1">Powered by Green Energy</span>
@@ -296,7 +303,27 @@ export default function Navbar({ onOpenEnquiry }) {
               </div>
             )}
           </div>
-          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Manufacturing (NYTEX)</span>
+          <div className="border-b border-slate-100">
+            <button
+              type="button"
+              onClick={() => setMobileManufacturingOpen(!mobileManufacturingOpen)}
+              aria-expanded={mobileManufacturingOpen}
+              className="w-full flex items-center justify-between py-2.5 px-4 text-slate-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+            >
+              <span>Manufacturing (NYTEX)</span>
+              <ChevronDown className={`w-4 h-4 opacity-60 transition-transform duration-300 ${mobileManufacturingOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileManufacturingOpen && (
+              <ul className="px-4 pt-1 pb-3 ml-0.5 text-slate-600 font-medium">
+                {manufacturingMobileLinks.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className="block py-1.5 hover:text-[#ed1c23] transition-colors">{link.label}</Link>
+                  </li>
+                ))}
+                <li><a href="/Nytex 2026 .pdf" download className="block py-1.5 font-bold text-[#ed1c23]">Download Catalogue</a></li>
+              </ul>
+            )}
+          </div>
           <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Trading & Own Brands</span>
           <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Retail (BAGINNOV Mall)</span>
           <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Application</span>
