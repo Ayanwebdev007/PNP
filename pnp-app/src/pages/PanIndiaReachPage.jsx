@@ -85,7 +85,7 @@ const distribution = [
   { icon: Network, title: 'All-India Sales Network', text: 'The only coated cloth company with a sales network across all of India.', img: 'https://images.unsplash.com/photo-1761133381018-aed5063d22fe?auto=format&fit=crop&w=1200&q=75' },
   { icon: Boxes, title: 'Ready Inventory', text: 'A huge variety stocked in our own warehouses, ready when you need it.', img: 'https://images.unsplash.com/photo-1644079446600-219068676743?auto=format&fit=crop&w=1200&q=75' },
   { icon: Globe2, title: 'Global Sourcing', text: 'New and innovative products from the rest of the world, brought to India.', img: '/assets/presence/global-sourcing.webp' },
-  { icon: Handshake, title: 'Jaquar Lighting, Mumbai', text: 'Authorised distributor of Jaquar Lighting from Bandra to Virar.', img: '/assets/businesses/jaquar-lighting-hq.webp' },
+  { icon: Handshake, title: 'Jaquar Lighting, Mumbai', text: 'Distributor of Jaquar Lighting across Mumbai, from Bandra to Virar.', img: '/assets/businesses/jaquar-lighting-hq.webp' },
 ];
 
 export default function PanIndiaReachPage({ onOpenEnquiry }) {

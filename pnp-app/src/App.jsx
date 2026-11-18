@@ -12,7 +12,10 @@ import PanIndiaReachPage from './pages/PanIndiaReachPage';
 import NytexDivisionPage from './pages/NytexDivisionPage';
 import NytexProductsPage from './pages/NytexProductsPage';
 import TradingPage from './pages/TradingPage';
+import TradingBrandPage from './pages/TradingBrandPage';
+import TradingProductPage from './pages/TradingProductPage';
 import RetailPage from './pages/RetailPage';
+import RetailBrandsPage from './pages/RetailBrandsPage';
 import ApplicationsPage from './pages/ApplicationsPage';
 import CertificationsPage from './pages/CertificationsPage';
 import DownloadsPage from './pages/DownloadsPage';
@@ -99,7 +102,16 @@ export default function App() {
             <Route path="/manufacturing/nytex-division" element={<NytexDivisionPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="/manufacturing/nytex-products" element={<NytexProductsPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="/trading" element={<TradingPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/trading/distribution" element={<Navigate to="/trading/jaquar" replace />} />
+            {/* PNP's own products moved onto one brand page */}
+            <Route path="/trading/racking/*" element={<Navigate to="/trading/pnp/warehouse-racking" replace />} />
+            <Route path="/trading/fabric/*" element={<Navigate to="/trading/pnp/coated-fabric" replace />} />
+            <Route path="/trading/webbings/*" element={<Navigate to="/trading/pnp/webbings" replace />} />
+            <Route path="/trading/label-tapes/*" element={<Navigate to="/trading/pnp/label-tapes" replace />} />
+            <Route path="/trading/:brandId" element={<TradingBrandPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/trading/:brandId/:productId" element={<TradingProductPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="/retail" element={<RetailPage onOpenEnquiry={handleOpenEnquiry} />} />
+            <Route path="/retail/brands" element={<RetailBrandsPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="/application" element={<ApplicationsPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="/applications" element={<ApplicationsPage onOpenEnquiry={handleOpenEnquiry} />} />
             <Route path="/certifications" element={<CertificationsPage onOpenEnquiry={handleOpenEnquiry} />} />

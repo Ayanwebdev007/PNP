@@ -30,11 +30,18 @@ const manufacturingMobileLinks = [
   { label: 'NYTEX Products', to: '/manufacturing/nytex-products' },
 ];
 
+const retailMobileLinks = [
+  { label: 'BAGINNOV Mall', to: '/retail' },
+  { label: 'Our Brands', to: '/retail/brands' },
+];
+
 export default function Navbar({ onOpenEnquiry }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [mobileManufacturingOpen, setMobileManufacturingOpen] = useState(false);
+  const [mobileRetailOpen, setMobileRetailOpen] = useState(false);
+  const [mobileTradingOpen, setMobileTradingOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -49,6 +56,8 @@ export default function Navbar({ onOpenEnquiry }) {
     setMobileMenuOpen(false);
     setMobileAboutOpen(false);
     setMobileManufacturingOpen(false);
+    setMobileRetailOpen(false);
+    setMobileTradingOpen(false);
   }, [location]);
 
   const navLinkClass = (path) => `
@@ -160,79 +169,78 @@ export default function Navbar({ onOpenEnquiry }) {
           </div>
 
           {/* Trading Mega Menu */}
-          <div className="relative group pointer-events-none">
-            <span className={navLinkClass('/trading')}>
+          <div className="relative group">
+            <Link to="/trading" className={navLinkClass('/trading')}>
               <span>Trading</span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
-            </span>
+            </Link>
             <div className={dropdownClass}>
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Own Brands
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/trading" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">PNP Fabrics (25% Market Share)</Link></li>
-                  <li><Link to="/trading" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Synwood & Haowood (10% Share)</Link></li>
-                  <li><Link to="/trading" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">HAO Ventilators (Make in India)</Link></li>
-                  <li><Link to="/trading" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">TIE Fasteners (PEB Screws)</Link></li>
+                <Link to="/trading" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  Own Brands <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                  <li><Link to="/trading/hao" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">HAO Air Ventilators</Link></li>
+                  <li><Link to="/trading/tie" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">TIE Roofing Screws</Link></li>
+                  <li><Link to="/trading/pnp" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">PNP Fabric, Racking &amp; More</Link></li>
+                  <li><Link to="/trading/synwood" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Synwood Synthetic Wood</Link></li>
+                  <li><Link to="/trading/haowood" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Haowood Wall Panels</Link></li>
                 </ul>
               </div>
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Distribution
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/trading" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">JAQUAR LIGHTING (Partner)</Link></li>
-                  <li><Link to="/trading" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Mumbai (Bandra to Virar)</Link></li>
-                  <li><Link to="/downloads" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">21 Synwood Catalogs</Link></li>
-                  <li><a href="/Jaquar 2062.pdf" download className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Jaquar 2026 Catalog (PDF)</a></li>
+              <div className="flex flex-col items-start h-full">
+                <Link to="/trading/jaquar" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  Distribution <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                  <li><Link to="/trading/jaquar" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Jaquar Lighting</Link></li>
                 </ul>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
                 <div className="overflow-hidden rounded-lg mb-3">
-                  <img src="/assets/products/luggage-fabric-hq.webp" alt="Coated Fabrics" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
+                  <img src="/assets/trading/rack-hero.webp" alt="PNP warehouse racking" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
                 </div>
-                <span className="text-sm font-bold text-slate-900 block leading-tight">Trading Network</span>
-                <span className="text-xs text-slate-500 block mt-1">25% Fabric Share</span>
+                <span className="text-sm font-bold text-slate-900 block leading-tight">PNP Trading</span>
+                <span className="text-xs text-slate-500 block mt-1">Own brands &amp; Jaquar distribution</span>
               </div>
             </div>
           </div>
 
           {/* Retail Mega Menu */}
-          <div className="relative group pointer-events-none">
-            <span className={navLinkClass('/retail')}>
+          <div className="relative group">
+            <Link to="/retail" className={navLinkClass('/retail')}>
               <span>Retail</span>
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
-            </span>
+            </Link>
             <div className={dropdownClass}>
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> BAGINNOV Mall
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">3-Floor 25,000 Sq. Ft. Mall</Link></li>
-                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Mangal Aarambh, Borivali (W)</Link></li>
-                  <li><a href="https://www.baginnov.in" target="_blank" rel="noopener noreferrer" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">baginnov.in Official Site</a></li>
-                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Corporate Bulk Gifting</Link></li>
+              <div className="flex flex-col items-start h-full">
+                <Link to="/retail" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  BAGINNOV Mall <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5 mb-6">
+                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">3 Floor 25,000 Sq. Ft. Mall</Link></li>
+                  <li><Link to="/retail#floors" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Floor Guide</Link></li>
+                  <li><Link to="/retail#range" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Product Range</Link></li>
+                  <li><Link to="/retail#visit" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Visit the Store</Link></li>
                 </ul>
+                <a href="/BAGINNOV 2026 .pdf" download className="mt-auto px-6 py-3 bg-[#ed1c23] hover:bg-[#c9141a] text-white text-sm font-medium rounded-full inline-flex items-center gap-2 transition-colors"><Download className="w-4 h-4" /> Download Catalogue</a>
               </div>
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-4 flex items-center gap-2">
-                  <span className="w-4 h-[2px] bg-[#ed1c23]"></span> Luggage Brands
-                </h4>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium">
-                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Samsonite & American Tourister</Link></li>
-                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Delsey Paris & Carlton</Link></li>
-                  <li><Link to="/retail" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">VIP, Safari & Skybags</Link></li>
-                  <li><a href="/BAGINNOV 2026 .pdf" download className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">2026 Retail Catalog (PDF)</a></li>
+              <div className="flex flex-col items-start h-full">
+                <Link to="/retail/brands" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
+                  Our Brands <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5 mb-6">
+                  <li><Link to="/retail/brands#handbags" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Handbag Brands</Link></li>
+                  <li><Link to="/retail/brands#backpacks" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Backpack Brands</Link></li>
+                  <li><Link to="/retail/brands#luggage" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Luggage Brands</Link></li>
+                  <li><Link to="/retail/brands#more" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">More Brands</Link></li>
                 </ul>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
                 <div className="overflow-hidden rounded-lg mb-3">
-                  <img src="/assets/businesses/baginnov-hq.webp" alt="BAGINNOV Mall" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
+                  <img src="/assets/retail/storefront.webp" alt="BAGINNOV storefront" className="w-full h-36 object-cover transform group-hover/card:scale-110 transition-transform duration-700" />
                 </div>
                 <span className="text-sm font-bold text-slate-900 block leading-tight">BAGINNOV Iconic Mall</span>
-                <span className="text-xs text-slate-500 block mt-1">25,000 Sq. Ft. Megastore</span>
+                <span className="text-xs text-slate-500 block mt-1">India's Largest Multi Brands Bags &amp; Luggage Mall</span>
               </div>
             </div>
           </div>
@@ -324,8 +332,50 @@ export default function Navbar({ onOpenEnquiry }) {
               </ul>
             )}
           </div>
-          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Trading & Own Brands</span>
-          <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Retail (BAGINNOV Mall)</span>
+          <div className="border-b border-slate-100">
+            <button
+              type="button"
+              onClick={() => setMobileTradingOpen(!mobileTradingOpen)}
+              aria-expanded={mobileTradingOpen}
+              className="w-full flex items-center justify-between py-2.5 px-4 text-slate-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+            >
+              <span>Trading</span>
+              <ChevronDown className={`w-4 h-4 opacity-60 transition-transform duration-300 ${mobileTradingOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileTradingOpen && (
+              <ul className="px-4 pt-1 pb-3 ml-0.5 text-slate-600 font-medium">
+                <li><Link to="/trading" className="block py-1.5 hover:text-[#ed1c23] transition-colors">Own Brands</Link></li>
+                <li><Link to="/trading/hao" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">HAO Air Ventilators</Link></li>
+                <li><Link to="/trading/tie" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">TIE Roofing Screws</Link></li>
+                <li><Link to="/trading/pnp" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">PNP Fabric, Racking &amp; More</Link></li>
+                <li><Link to="/trading/synwood" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">Synwood Synthetic Wood</Link></li>
+                <li><Link to="/trading/haowood" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">Haowood Wall Panels</Link></li>
+                <li className="pt-1.5 pb-1 text-slate-800">Distribution</li>
+                <li><Link to="/trading/jaquar" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">Jaquar Lighting</Link></li>
+              </ul>
+            )}
+          </div>
+          <div className="border-b border-slate-100">
+            <button
+              type="button"
+              onClick={() => setMobileRetailOpen(!mobileRetailOpen)}
+              aria-expanded={mobileRetailOpen}
+              className="w-full flex items-center justify-between py-2.5 px-4 text-slate-800 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors"
+            >
+              <span>Retail (BAGINNOV)</span>
+              <ChevronDown className={`w-4 h-4 opacity-60 transition-transform duration-300 ${mobileRetailOpen ? 'rotate-180' : ''}`} />
+            </button>
+            {mobileRetailOpen && (
+              <ul className="px-4 pt-1 pb-3 ml-0.5 text-slate-600 font-medium">
+                {retailMobileLinks.map((link) => (
+                  <li key={link.to}>
+                    <Link to={link.to} className="block py-1.5 hover:text-[#ed1c23] transition-colors">{link.label}</Link>
+                  </li>
+                ))}
+                <li><a href="/BAGINNOV 2026 .pdf" download className="block py-1.5 font-bold text-[#ed1c23]">Download Catalogue</a></li>
+              </ul>
+            )}
+          </div>
           <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Application</span>
           <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Certifications & Awards</span>
           <span className="block py-2.5 px-4 text-slate-800 border-b border-slate-100 rounded-lg pointer-events-none">Contact Us</span>

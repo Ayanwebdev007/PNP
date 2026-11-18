@@ -79,25 +79,28 @@ export const synwoodCatalogues = [
 ];
 
 export const businessLogos = [
-  { id: "nytex", name: "NYTEX", division: "mfg", logo: "/assets/businesses/logo-nytex.webp", image: "/assets/businesses/nytex-hq-new.webp", desc: "Nylon Filament Yarn, Made for Fine Fabric", link: "/manufacturing" },
-  { id: "pnp", name: "PNP Polytex", division: "trading", logo: "/assets/businesses/logo-pnp.webp", image: "/assets/products/luggage-fabric-hq.webp", desc: "25% Market Share in Coated Fabrics", link: "/trading#categories" },
-  { id: "synwood", name: "Synwood", division: "trading", logo: "/assets/businesses/logo-synwood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Premium Synthetic Wood Solutions", link: "https://www.pnpind.com/synthetic-wood-synwood", external: true },
-  { id: "hao", name: "HAO Air Ventilators", division: "trading", logo: "/assets/businesses/logo-hao.webp", image: "/assets/products/turbo-ventilators-hq.webp", desc: "High-Performance Air Ventilation", pdf: "/Hao-2026 new.pdf" },
-  { id: "tie", name: "TIE Fasteners", division: "trading", logo: "/assets/businesses/logo-tie.webp", image: "/assets/products/roofing-screws-hq.webp", desc: "Industrial Roofing Screws & Fasteners", pdf: "/Tie 2026 New .pdf" },
-  { id: "baginnov", name: "BAGINNOV", division: "retail", logo: "/assets/businesses/logo-baginnov.webp", image: "/assets/businesses/baginnov-hq.webp", desc: "25,000 Sq. Ft. Iconic Luggage Mall", link: "https://www.baginnov.in", external: true },
-  { id: "haowood", name: "HAOWOOD", division: "trading", logo: "/assets/businesses/logo-haowood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Sustainable Building Materials", link: "/trading#categories" },
-  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "/assets/businesses/logo-jaquar.webp", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Authorized Commercial Distributors", pdf: "/Jaquar 2062.pdf" }
+  { id: "nytex", name: "NYTEX", division: "mfg", logo: "/assets/businesses/logo-nytex.webp", image: "/assets/businesses/nytex-hq-new.webp", desc: "Nylon Filament Yarn, Made for Fine Fabric", link: "/manufacturing/nytex-division" },
+  { id: "pnp", name: "PNP Polytex", division: "trading", logo: "/assets/businesses/logo-pnp.webp", image: "/assets/products/luggage-fabric-hq.webp", desc: "25% Market Share in Coated Fabrics", link: "/trading/pnp" },
+  { id: "synwood", name: "Synwood", division: "trading", logo: "/assets/businesses/logo-synwood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Premium Synthetic Wood Solutions", link: "/trading/synwood" },
+  { id: "hao", name: "HAO Air Ventilators", division: "trading", logo: "/assets/businesses/logo-hao.webp", image: "/assets/products/turbo-ventilators-hq.webp", desc: "High-Performance Air Ventilation", link: "/trading/hao" },
+  { id: "tie", name: "TIE Fasteners", division: "trading", logo: "/assets/businesses/logo-tie.webp", image: "/assets/products/roofing-screws-hq.webp", desc: "Industrial Roofing Screws & Fasteners", link: "/trading/tie" },
+  { id: "baginnov", name: "BAGINNOV", division: "retail", logo: "/assets/businesses/logo-baginnov.webp", image: "/assets/businesses/baginnov-hq.webp", desc: "25,000 Sq. Ft. Iconic Luggage Mall", link: "/retail" },
+  { id: "haowood", name: "HAOWOOD", division: "trading", logo: "/assets/businesses/logo-haowood.webp", image: "/assets/products/synwood-boards-hq.webp", desc: "Sustainable Building Materials", link: "/trading/haowood" },
+  { id: "jaquar", name: "JAQUAR Lighting", division: "trading", logo: "/assets/businesses/logo-jaquar.webp", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", desc: "Lighting Distribution, Mumbai", link: "/trading/jaquar" }
 ];
 
 export const featuredProducts = [
-  { id: "warehouse-racking", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Warehouse Racking System", desc: "Heavy duty storage solutions.", image: "/assets/products/racking-hq.webp", link: "/trading#categories" },
-  { id: "coated-fabric", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Coated Fabric", desc: "Durable. Stylish. Reliable.", image: "/assets/products/luggage-fabric-hq.webp", link: "/trading#categories" },
-  { id: "webbings", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Webbings", desc: "High tenacity belts and straps.", image: "/assets/products/webbings-hq.webp", link: "/trading#categories" },
-  { id: "label-tapes", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Label Tapes", desc: "Premium woven label materials.", image: "/assets/products/label-tape-hq.webp", link: "/trading#categories" },
-  { id: "nylon-yarn", brand: "NYTEX", brandLogo: "/assets/businesses/logo-nytex.webp", title: "Filament Yarn", desc: "Highest quality Nylon Filament Yarn.", image: "/assets/products/nylon-yarn-hq.webp", link: "/manufacturing" },
-  { id: "synthetic-wood", brand: "Synwood", brandLogo: "/assets/businesses/logo-synwood.webp", title: "Synthetic Wood", desc: "Revolutionary PVC wood alternative.", image: "/assets/products/synwood-boards-hq.webp", link: "/trading#categories" },
-  { id: "air-ventilators", brand: "HAO", brandLogo: "/assets/businesses/logo-hao.webp", title: "Air Ventilators", desc: "Natural Air Ventilation Systems.", image: "/assets/products/turbo-ventilators-hq.webp", link: "/trading#categories" },
-  { id: "roofing-screw", brand: "TiE", brandLogo: "/assets/businesses/logo-tie.webp", title: "Roofing Screw", desc: "The Permanent Bond for construction.", image: "/assets/products/roofing-screws-hq.webp", link: "/trading#categories" }
+  { id: "warehouse-racking", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Warehouse Racking System", desc: "Heavy duty storage solutions.", image: "/assets/products/racking-hq.webp", link: "/trading/pnp/warehouse-racking" },
+  { id: "coated-fabric", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Coated Fabric", desc: "Durable. Stylish. Reliable.", image: "/assets/products/luggage-fabric-hq.webp", link: "/trading/pnp/coated-fabric" },
+  { id: "webbings", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Webbings", desc: "High tenacity belts and straps.", image: "/assets/products/webbings-hq.webp", link: "/trading/pnp/webbings" },
+  { id: "label-tapes", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Label Tapes", desc: "Premium woven label materials.", image: "/assets/products/label-tape-hq.webp", link: "/trading/pnp/label-tapes" },
+  { id: "office-furniture", brand: "PNP", brandLogo: "/assets/businesses/logo-pnp.webp", title: "Office Automation Furniture", desc: "Portable, powder coated and easy to assemble.", image: "/assets/trading/pnp-oa-office.webp", link: "/trading/pnp/office-furniture" },
+  { id: "nylon-yarn", brand: "NYTEX", brandLogo: "/assets/businesses/logo-nytex.webp", title: "Filament Yarn", desc: "Highest quality Nylon Filament Yarn.", image: "/assets/products/nylon-yarn-hq.webp", link: "/manufacturing/nytex-products" },
+  { id: "synthetic-wood", brand: "Synwood", brandLogo: "/assets/businesses/logo-synwood.webp", title: "Synthetic Wood", desc: "Revolutionary PVC wood alternative.", image: "/assets/products/synwood-boards-hq.webp", link: "/trading/synwood" },
+  { id: "wall-panels", brand: "Haowood", brandLogo: "/assets/businesses/logo-haowood.webp", title: "PVC Wall & Ceiling Panels", desc: "Warm Decors Forever.", image: "/assets/trading/haowood-room.webp", link: "/trading/haowood" },
+  { id: "air-ventilators", brand: "HAO", brandLogo: "/assets/businesses/logo-hao.webp", title: "Air Ventilators", desc: "Natural Air Ventilation Systems.", image: "/assets/products/turbo-ventilators-hq.webp", link: "/trading/hao/turbo-ventilator" },
+  { id: "roofing-screw", brand: "TiE", brandLogo: "/assets/businesses/logo-tie.webp", title: "Roofing Screw", desc: "The Permanent Bond for construction.", image: "/assets/products/roofing-screws-hq.webp", link: "/trading/tie" },
+  { id: "jaquar-lighting", brand: "Jaquar", brandLogo: "/assets/trading/jaquar/logo.webp", title: "Lighting & Switches", desc: "Indoor, outdoor and decorative lighting.", image: "https://www.studiomatrx.org/guides/home-lighting-design-guide-india/hero.jpg", link: "/trading/jaquar" }
 ];
 
 export const industriesServe = [

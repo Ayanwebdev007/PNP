@@ -41,9 +41,9 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-sm">
 
-              <li><Link to="/manufacturing" className="text-white/70 hover:text-[#fff100] transition-colors">Nytex</Link></li>
-              <li><Link to="/trading" className="text-white/70 hover:text-[#fff100] transition-colors">Synwood</Link></li>
-              <li><Link to="/trading" className="text-white/70 hover:text-[#fff100] transition-colors">HAO</Link></li>
+              <li><Link to="/manufacturing/nytex-division" className="text-white/70 hover:text-[#fff100] transition-colors">Nytex</Link></li>
+              <li><Link to="/trading/synwood" className="text-white/70 hover:text-[#fff100] transition-colors">Synwood</Link></li>
+              <li><Link to="/trading/hao" className="text-white/70 hover:text-[#fff100] transition-colors">HAO</Link></li>
               <li><Link to="/retail" className="text-white/70 hover:text-[#fff100] transition-colors">Baginnov</Link></li>
             </ul>
           </div>

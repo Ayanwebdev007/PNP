@@ -1,105 +1,58 @@
 import React from 'react';
-import { Shield, CheckCircle2, Download, Package } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import CtaBannerSection from '../components/CtaBannerSection';
+import { brands } from '../data/tradingData';
+import { img } from '../components/TradingCommon';
+
 
 export default function TradingPage({ onOpenEnquiry }) {
-  const tradingBrands = [
-    {
-      name: "PNP Coated Fabrics",
-      share: "25% Indian Market Share",
-      desc: "High-denier PVC & PU coated nylon/polyester fabrics engineered for soft luggage, backpacks, rainwear, and industrial canvas.",
-      img: "/assets/products/luggage-fabric-hq.webp",
-      pdf: "/PNP All Logos.pdf"
-    },
-    {
-      name: "Synwood & Haowood",
-      share: "10% Market Share",
-      desc: "100% Waterproof, termite-proof & fire-retardant synthetic wood WPC/PVC boards for luxury interiors & exterior cladding.",
-      img: "/assets/products/synwood-boards-hq.webp",
-      pdf: "/PNP diary 2019.pdf"
-    },
-    {
-      name: "HAO Roof Turbo Ventilators",
-      share: "Eco-Friendly Ventilation",
-      desc: "Stainless steel & aluminium wind-driven roof ventilators for industrial factories, warehouses & commercial buildings.",
-      img: "/assets/products/turbo-ventilators-hq.webp",
-      pdf: "/Hao-2026 new.pdf"
-    },
-    {
-      name: "TIE Roofing Fasteners",
-      share: "PEB Self-Drilling Screws",
-      desc: "High-tensile corrosion resistant self-drilling screws with EPDM washers for pre-engineered steel buildings.",
-      img: "/assets/products/roofing-screws-hq.webp",
-      pdf: "/Tie Scres 2026.pdf"
-    },
-    {
-      name: "PNP Heavy Duty Racking Systems",
-      share: "Warehousing Storage",
-      desc: "Heavy duty pallet racking, selective racks, and mezzanine systems for modern logistics warehouses.",
-      img: "/assets/about/building.webp",
-      pdf: "/PNP Racking 2026.pdf"
-    },
-    {
-      name: "Jaquar Commercial Lighting",
-      share: "Mumbai Authorized Distributor",
-      desc: "Authorized distribution partner for Jaquar commercial, architectural & smart outdoor lighting solutions (Bandra to Virar).",
-      img: "/assets/about/building.webp",
-      pdf: "/Jaquar 2062.pdf"
-    }
-  ];
-
   return (
-    <div className="bg-slate-950 text-white min-h-screen py-12">
-      <div className="max-w-7xl mx-auto px-4 space-y-16">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-xs uppercase tracking-widest text-red-500 font-bold">Trading & Own Brands</span>
-          <h1 className="text-4xl md:text-5xl font-extrabold">Market Leading Industrial Brands</h1>
-          <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-            Distributing top-quality coated fabrics (25% market share), synthetic wood (10% share), roof ventilators, PEB screws & Jaquar lighting.
-          </p>
+    <div className="bg-white text-neutral-900">
+
+      {/* Hero */}
+      <section className="relative flex flex-col justify-end min-h-[calc(100svh-89px)] overflow-hidden text-white">
+        <img src={img('hao-roof')} alt="HAO turbo ventilators on a factory roof" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-x-0 bottom-0 h-3/5 bg-gradient-to-t from-black via-black/65 to-transparent" />
+        <div className="relative w-full flex flex-col lg:flex-row items-center justify-center gap-5 lg:gap-8 text-center px-4 md:px-8 pb-10 lg:pb-12">
+          <h1 className="text-3xl xl:text-4xl font-medium tracking-tight max-lg:text-balance lg:whitespace-nowrap">Our Own Brands, Built for Industry</h1>
+          <a href="#brands" className="max-sm:w-full max-sm:max-w-xs px-7 py-3.5 bg-[#ed1c23] hover:bg-[#c9141a] text-white text-sm font-bold rounded-full flex items-center justify-center gap-2 whitespace-nowrap transition-colors">
+            Explore Brands <ArrowRight className="w-4 h-4" />
+          </a>
         </div>
+      </section>
 
-        {/* Brands Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {tradingBrands.map((b, i) => (
-            <div key={i} className="bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden flex flex-col justify-between hover:border-red-500/40 transition-all shadow-xl">
-              <div className="relative h-48 overflow-hidden bg-slate-950">
-                <img src={b.img} alt={b.name} className="w-full h-full object-cover" />
-                <span className="absolute top-3 right-3 px-3 py-1 bg-red-600/90 backdrop-blur-md text-white font-bold text-xs rounded-full">
-                  {b.share}
-                </span>
-              </div>
+      {/* Brands */}
+      <section id="brands" className="scroll-mt-24 py-12 lg:py-16">
+        <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+          <h2 className="text-center text-3xl lg:text-5xl font-medium tracking-tight">Own <span className="text-[#ed1c23]">Brands</span></h2>
 
-              <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <h3 className="text-xl font-bold text-white">{b.name}</h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">{b.desc}</p>
-                </div>
-
-                <div className="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
-                  <button
-                    onClick={() => onOpenEnquiry(b.name)}
-                    className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white text-xs font-bold rounded-lg transition-colors"
-                  >
-                    Enquire Now
-                  </button>
-
-                  <a
-                    href={b.pdf}
-                    download
-                    className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold rounded-lg flex items-center gap-1.5 transition-colors"
-                  >
-                    <Download className="w-3.5 h-3.5" />
-                    <span>Catalog</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+          <ul className="mt-8 lg:mt-12 flex flex-wrap justify-center gap-4 lg:gap-5">
+            {brands.map((b) => (
+              <li key={b.id} className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.84rem)]">
+                <Link to={`/trading/${b.id}`} className="group h-full flex flex-col rounded-2xl overflow-hidden ring-1 ring-neutral-200 hover:ring-[#ed1c23] bg-white transition-colors">
+                  <div className="relative overflow-hidden">
+                    <img src={img(b.card || b.hero)} alt={b.heroAlt} loading="lazy" className={`w-full object-cover transition-transform duration-700 group-hover:scale-105 aspect-[4/3]`} />
+                    {b.badges[0] && <span className="absolute bottom-3 right-3 px-3 py-1.5 rounded-full bg-[#ed1c23] text-white text-xs font-bold">{b.badges[0]}</span>}
+                  </div>
+                  <div className="flex-1 p-5 lg:p-6 max-sm:p-4 flex items-end justify-between gap-4">
+                    <div>
+                      <p className="text-sm font-semibold text-[#ed1c23]">{b.product}</p>
+                      <h3 className="mt-1 text-2xl lg:text-3xl font-medium tracking-tight">{b.name}</h3>
+                      <p className="mt-1 text-sm text-neutral-500">{b.products.length > 0 ? `${b.products.length} products` : b.tagline}</p>
+                    </div>
+                    <span className="shrink-0 w-11 h-11 max-sm:w-10 max-sm:h-10 rounded-full ring-1 ring-neutral-300 group-hover:bg-[#ed1c23] group-hover:ring-[#ed1c23] group-hover:text-white flex items-center justify-center transition-colors">
+                      <ArrowRight className="w-5 h-5" />
+                    </span>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
+      </section>
 
-      </div>
+      <CtaBannerSection onOpenEnquiry={onOpenEnquiry} />
     </div>
   );
 }
