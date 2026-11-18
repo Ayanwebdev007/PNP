@@ -175,17 +175,18 @@ export default function Navbar({ onOpenEnquiry }) {
               <ChevronDown className="w-3.5 h-3.5 opacity-60 group-hover:rotate-180 transition-transform duration-300" />
             </Link>
             <div className={dropdownClass}>
-              <div>
+              <div className="flex flex-col items-start h-full">
                 <Link to="/trading" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
                   Own Brands <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5 mb-6">
                   <li><Link to="/trading/hao" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">HAO Air Ventilators</Link></li>
                   <li><Link to="/trading/tie" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">TIE Roofing Screws</Link></li>
                   <li><Link to="/trading/pnp" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">PNP Fabric, Racking &amp; More</Link></li>
                   <li><Link to="/trading/synwood" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Synwood Synthetic Wood</Link></li>
                   <li><Link to="/trading/haowood" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Haowood Wall Panels</Link></li>
                 </ul>
+                <a href="/catalogues/PNP Trading Catalogues.zip" download className="mt-auto px-6 py-3 bg-[#ed1c23] hover:bg-[#c9141a] text-white text-sm font-medium rounded-full inline-flex items-center gap-2 transition-colors"><Download className="w-4 h-4" /> Download Catalogue</a>
               </div>
               <div className="flex flex-col items-start h-full">
                 <Link to="/trading/jaquar" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
@@ -194,7 +195,6 @@ export default function Navbar({ onOpenEnquiry }) {
                 <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5 mb-6">
                   <li><Link to="/trading/jaquar" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Jaquar Lighting</Link></li>
                 </ul>
-                <a href="/catalogues/PNP Trading Catalogues.zip" download className="mt-auto px-6 py-3 bg-[#ed1c23] hover:bg-[#c9141a] text-white text-sm font-medium rounded-full inline-flex items-center gap-2 transition-colors"><Download className="w-4 h-4" /> Download Catalogue</a>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
                 <div className="overflow-hidden rounded-lg mb-3">
