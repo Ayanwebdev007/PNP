@@ -191,9 +191,10 @@ export default function Navbar({ onOpenEnquiry }) {
                 <Link to="/trading/jaquar" className="text-xs font-bold uppercase tracking-widest text-[#ed1c23] mb-3 flex items-center gap-2 hover:text-[#c9141a]">
                   Distribution <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5">
+                <ul className="space-y-3 text-sm text-slate-600 font-medium border-l-2 border-[#ed1c23]/30 pl-4 ml-0.5 mb-6">
                   <li><Link to="/trading/jaquar" className="hover:text-[#ed1c23] hover:translate-x-1 inline-block transition-all">Jaquar Lighting</Link></li>
                 </ul>
+                <a href="/catalogues/PNP Trading Catalogues.zip" download className="mt-auto px-6 py-3 bg-[#ed1c23] hover:bg-[#c9141a] text-white text-sm font-medium rounded-full inline-flex items-center gap-2 transition-colors"><Download className="w-4 h-4" /> Download Catalogue</a>
               </div>
               <div className="rounded-xl overflow-hidden bg-slate-50 border border-slate-200 p-2.5 text-center group/card hover:shadow-lg transition-shadow">
                 <div className="overflow-hidden rounded-lg mb-3">
@@ -352,6 +353,7 @@ export default function Navbar({ onOpenEnquiry }) {
                 <li><Link to="/trading/haowood" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">Haowood Wall Panels</Link></li>
                 <li className="pt-1.5 pb-1 text-slate-800">Distribution</li>
                 <li><Link to="/trading/jaquar" className="block py-1.5 pl-3 hover:text-[#ed1c23] transition-colors">Jaquar Lighting</Link></li>
+                <li><a href="/catalogues/PNP Trading Catalogues.zip" download className="block py-1.5 font-bold text-[#ed1c23]">Download Catalogue</a></li>
               </ul>
             )}
           </div>

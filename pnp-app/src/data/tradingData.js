@@ -178,17 +178,13 @@ export const brands = [
       short: 'Drilling, tapping & drilling crest',
       desc: 'Self drilling roofing screws with EPDM washer, HWH 14 & 24 TPI, zinc and Xylan coating and an SS 304 head option that stays rust free for life. Available in drilling, tapping and drilling crest types.',
       images: [
-        ['tie-range-sheet', 'TIE self drilling screw range sheet'],
-        ['tie-finishes', 'TIE screws in four finishes'],
-        ['tie-sizes', 'TIE screws in 25 to 65 mm, yellow zinc and SS'],
+        // Product photos only; brochure pages (range sheet, finish and size charts, anatomy) stay out of the gallery.
         ['tie-cat-photo-1', 'TIE self drilling screws in six lengths'],
-        ['tie-cat-photo-2', 'Close-up of TIE hex washer heads'],
-        ['tie-cat-photo-3', 'Row of long TIE drilling screws'],
         ['tie-mixed', 'Mixed set of zinc and silver TIE screws'],
-        ['tie-screws', 'Set of TIE screws with EPDM washers'],
-        ['tie-closeup', 'Row of zinc coated TIE roofing screws'],
+        ['tie-cat-photo-2', 'Close-up of TIE hex washer heads'],
         ['tie-heads', 'TIE hex washer head screws in three sizes'],
-        ['tie-anatomy', 'TIE screw parts diagram'],
+        ['tie-closeup', 'Row of zinc coated TIE roofing screws'],
+        ['tie-screws', 'Set of TIE screws with EPDM washers'],
       ],
       // Every screw on the range sheet: [length in mm, finish code, new arrival].
       series: [

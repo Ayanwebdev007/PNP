@@ -187,11 +187,11 @@ export default function HaoBrandPage({ onOpenEnquiry }) {
           <h2 className="text-center text-3xl lg:text-5xl font-medium tracking-tight">Engineered for <span className="text-[#ed1c23]">Performance</span></h2>
           <ul className="mt-8 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5">
             {b.builtWith.map(([src, t]) => (
-              <li key={t} className="group bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200">
-                <div className="overflow-hidden">
+              <li key={t} className="group bg-white rounded-2xl overflow-hidden ring-1 ring-neutral-200 max-sm:flex max-sm:flex-col">
+                <div className="overflow-hidden max-sm:shrink-0">
                   <img src={img(src)} alt={t} loading="lazy" className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
-                <h3 className="px-4 py-3.5 lg:px-5 max-sm:px-3 max-sm:py-2.5 max-sm:text-sm font-semibold leading-snug bg-[#ed1c23] text-white">{t}</h3>
+                <h3 className="px-4 py-3.5 lg:px-5 max-sm:flex-1 max-sm:flex max-sm:items-center max-sm:min-h-[3.25rem] max-sm:px-3 max-sm:py-2.5 max-sm:text-sm font-semibold leading-snug bg-[#ed1c23] text-white">{t}</h3>
               </li>
             ))}
           </ul>

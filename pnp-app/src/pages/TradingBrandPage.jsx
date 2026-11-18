@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useParams } from 'react-router-dom';
-import { ArrowRight, Bug, Building2, Check, Download, Drill, Droplet, Droplets, Factory, Feather, FileText, FlaskConical, Flame, Gem, GraduationCap, Hammer, Hand, Hospital, Hotel, Leaf, Maximize2, Paintbrush, PenTool, Printer, Scissors, Shield, ShieldCheck, ShieldPlus, Ship, Sparkles, Timer, VolumeX, Wrench, X, Zap } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Printer, Shield, Timer, Zap, Sparkles, Bug, Droplets, ShieldPlus, VolumeX, Feather, Hand, Maximize2, Gem, Building2, Check, Download, Drill, Droplet, Factory, FileText, FlaskConical, Flame, GraduationCap, Hammer, Hospital, Hotel, Leaf, Paintbrush, PenTool, Scissors, Ship, Wrench, X } from 'lucide-react';
 import CtaBannerSection from '../components/CtaBannerSection';
 import { brands, findBrand } from '../data/tradingData';
 import { Breadcrumb, ChipGroup, MoreBrands, ProductCard, img } from '../components/TradingCommon';
@@ -11,15 +11,15 @@ import JaquarBrandPage from './JaquarBrandPage';
 import { Gallery, RangeTable } from '../components/ProductGallery';
 
 
-// Icon picks for characteristics, tools and client industries.
+// Icon picks for characteristics, certificates, tools and client industries.
 const charRules = [
   [/corrosion/i, ShieldCheck], [/print/i, Printer], [/screw/i, Hammer], [/impact/i, Shield], [/fire|flame/i, Flame],
   [/speedy/i, Timer], [/installation/i, Zap], [/maintenance/i, Sparkles], [/chemical/i, FlaskConical], [/termite|pest/i, Bug],
   [/environment|eco/i, Leaf], [/water/i, Droplets], [/toxic/i, ShieldPlus], [/sound/i, VolumeX], [/light/i, Feather],
   [/splinter/i, Hand], [/shrink/i, Maximize2], [/aesthetic/i, Gem], [/paint/i, Paintbrush],
 ];
-const certIcon = (t) => (/flam/i.test(t) ? Flame : /phthal/i.test(t) ? FlaskConical : Leaf);
 const charIcon = (t) => charRules.find(([re]) => re.test(t))?.[1] || Check;
+const certIcon = (t) => (/flam/i.test(t) ? Flame : /phthal/i.test(t) ? FlaskConical : Leaf);
 const toolIcons = { Screws: Wrench, Cutting: Scissors, Nailing: Hammer, Drilling: Drill, Painting: Paintbrush, Gluing: Droplet, Routing: PenTool };
 const industryRules = [[/hospital|health/i, Hospital], [/hotel|hospitality/i, Hotel], [/educat/i, GraduationCap], [/yacht|ship/i, Ship], [/industr|engineer|mill|chemical|petroleum|manufact/i, Factory]];
 const industryIcon = (t) => industryRules.find(([re]) => re.test(t))?.[1] || Building2;
@@ -122,42 +122,32 @@ export default function TradingBrandPage({ onOpenEnquiry }) {
         </div>
       </Section>
 
-      {/* Certifications */}
+      {/* Certifications: one logo, three report columns split by hairlines */}
       {b.certifications && (
         <Section id="certifications" className="!pt-0">
-          <div className="rounded-3xl bg-neutral-50 ring-1 ring-neutral-200 p-6 sm:p-8 lg:p-12">
-            <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-10">
-              <div className="flex items-center gap-5 max-sm:gap-4">
-                <span className="w-36 h-24 lg:w-44 lg:h-28 max-sm:w-24 max-sm:h-16 max-sm:px-3 max-sm:py-2 shrink-0 rounded-2xl bg-white ring-1 ring-neutral-200 flex items-center justify-center px-5 py-4">
-                  <img src={b.certifications.logo} alt="SGS" className="w-full h-auto" />
-                </span>
+          <div className="border-t border-neutral-200 pt-10 lg:pt-14">
+            <div className="flex items-center gap-5 lg:gap-7">
+                <img src={b.certifications.logo} alt="SGS" className="h-12 lg:h-16 w-auto shrink-0" />
+                <span aria-hidden="true" className="w-px self-stretch bg-neutral-200" />
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#ed1c23]">Independently Tested</p>
-                  <h2 className="mt-1 text-3xl lg:text-5xl max-sm:text-2xl font-medium tracking-tight">SGS <span className="text-[#ed1c23]">Certified</span></h2>
+                  <h2 className="text-3xl lg:text-5xl max-sm:text-2xl font-medium tracking-tight">SGS <span className="text-[#ed1c23]">Certified</span></h2>
                 </div>
-              </div>
-              <p className="lg:ml-auto lg:max-w-md text-neutral-600 leading-relaxed">
-                Synwood material has been tested by {b.certifications.body} for formaldehyde emission, phthalates content and fire performance.
-              </p>
             </div>
 
-            <ul className="mt-8 lg:mt-10 grid md:grid-cols-3 gap-4 lg:gap-6">
+            <ul className="mt-10 lg:mt-14 grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-neutral-200">
               {b.certifications.reports.map((r) => (
-                <li key={r.no} className="flex flex-col rounded-2xl bg-white ring-1 ring-neutral-200 overflow-hidden">
-                  <div className="flex-1 flex flex-col p-5 lg:p-6 max-sm:p-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <img src={b.certifications.logo} alt="SGS" className="h-10 w-auto" />
-                      <span className="w-11 h-11 rounded-xl bg-[#ed1c23]/[0.08] text-[#ed1c23] flex items-center justify-center">{React.createElement(certIcon(r.title), { className: 'w-5 h-5', strokeWidth: 1.75 })}</span>
-                    </div>
-                    <h3 className="mt-3 text-xl lg:text-2xl font-medium tracking-tight">{r.title}</h3>
-                    <p className="mt-2 inline-flex w-fit items-center gap-1.5 px-3 py-1 rounded-full bg-[#ed1c23] text-white text-xs font-bold"><Check className="w-3.5 h-3.5" strokeWidth={3} /> {r.result}</p>
-                    <p className="mt-3 text-sm text-neutral-600 leading-relaxed">{r.detail}</p>
-                    <dl className="mt-auto pt-4 grid grid-cols-3 gap-2 text-xs border-t border-neutral-100">
-                      <div><dt className="text-neutral-400">Report No.</dt><dd className="mt-0.5 font-semibold break-all">{r.no}</dd></div>
-                      <div><dt className="text-neutral-400">Date</dt><dd className="mt-0.5 font-semibold">{r.date}</dd></div>
-                      <div><dt className="text-neutral-400">Sample</dt><dd className="mt-0.5 font-semibold">{r.sample}</dd></div>
-                    </dl>
-                  </div>
+                <li key={r.no} className="flex flex-col py-6 first:pt-0 last:pb-0 md:py-0 md:px-8 lg:px-10 md:first:pl-0 md:last:pr-0">
+                  <h3 className="flex items-center gap-2.5 text-xl lg:text-2xl font-medium tracking-tight">
+                    {React.createElement(certIcon(r.title), { className: 'w-5 h-5 shrink-0 text-[#ed1c23]', strokeWidth: 1.5, 'aria-hidden': true })}
+                    {r.title}
+                  </h3>
+                  <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-[#ed1c23]"><Check className="w-4 h-4" strokeWidth={2.5} /> {r.result}</p>
+                  <p className="mt-3 text-[15px] max-sm:text-sm text-neutral-600 leading-relaxed">{r.detail}</p>
+                  <dl className="mt-auto pt-5 grid grid-cols-3 gap-3 text-xs">
+                    <div><dt className="text-neutral-400">Report No.</dt><dd className="mt-0.5 font-semibold break-all">{r.no}</dd></div>
+                    <div><dt className="text-neutral-400">Date</dt><dd className="mt-0.5 font-semibold">{r.date}</dd></div>
+                    <div><dt className="text-neutral-400">Sample</dt><dd className="mt-0.5 font-semibold">{r.sample}</dd></div>
+                  </dl>
                 </li>
               ))}
             </ul>
@@ -223,23 +213,24 @@ export default function TradingBrandPage({ onOpenEnquiry }) {
         </Section>
       )}
 
-      {/* Characteristics: icon cards */}
+      {/* Characteristics: numbered spec list */}
       {b.characteristics && (
         <Section>
-          <Title a="Characteristics of" b={b.name} center />
-          <ul className="mt-8 lg:mt-12 flex flex-wrap justify-center gap-3 lg:gap-4">
+          <div className="flex items-end gap-6">
+            <Title a="Characteristics of" b={b.name} />
+            <span aria-hidden="true" className="hidden md:block flex-1 h-px mb-3 lg:mb-4 bg-[#ed1c23]" />
+          </div>
+          <ol className="mt-8 lg:mt-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-5 sm:gap-x-8 lg:gap-x-12">
             {b.characteristics.map((c) => {
               const Icon = charIcon(c);
               return (
-                <li key={c} className="group w-[calc(50%-0.375rem)] sm:w-[calc(33.333%-0.5rem)] lg:w-[calc(20%-0.8rem)] xl:w-[calc(14.285%-0.86rem)] flex flex-col items-center text-center gap-3 rounded-2xl ring-1 ring-neutral-200 hover:ring-[#ed1c23] px-3 py-5 transition-colors">
-                  <span className="w-12 h-12 rounded-xl bg-[#ed1c23]/[0.08] text-[#ed1c23] group-hover:bg-[#ed1c23] group-hover:text-white flex items-center justify-center transition-colors">
-                    <Icon className="w-6 h-6" strokeWidth={1.75} />
-                  </span>
-                  <span className="text-sm font-semibold leading-snug">{c}</span>
+                <li key={c} className="group flex items-start gap-3 lg:gap-4 border-t border-neutral-200 hover:border-[#ed1c23] pt-3 pb-5 lg:pt-4 lg:pb-7 transition-colors">
+                  <Icon aria-hidden="true" className="w-5 h-5 lg:w-6 lg:h-6 mt-px shrink-0 text-[#ed1c23]" strokeWidth={1.5} />
+                  <span className="text-[15px] sm:text-base lg:text-lg font-medium tracking-tight leading-snug group-hover:text-[#ed1c23] transition-colors">{c}</span>
                 </li>
               );
             })}
-          </ul>
+          </ol>
         </Section>
       )}
 
@@ -287,28 +278,25 @@ export default function TradingBrandPage({ onOpenEnquiry }) {
         </Section>
       )}
 
-      {/* Clients + certificate */}
+      {/* Clients: joined tile wall (28 clients fill 2 and 4 columns exactly) */}
       {b.clients && (
         <Section className="bg-neutral-50">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-14 items-start">
-            <div className="lg:col-span-12">
-              <Title a="Our" b="Clients" />
-              <ul className="mt-6 grid sm:grid-cols-2 xl:grid-cols-3 gap-3">
-                {b.clients.map(([name, place, industry]) => {
-                  const Icon = industryIcon(industry);
-                  return (
-                    <li key={name} className="flex items-center gap-3 rounded-xl bg-white ring-1 ring-neutral-200 px-3.5 py-3">
-                      <span className="w-9 h-9 shrink-0 rounded-lg bg-[#ed1c23]/[0.08] text-[#ed1c23] flex items-center justify-center"><Icon className="w-4 h-4" strokeWidth={1.75} /></span>
-                      <span className="min-w-0">
-                        <span className="block text-sm font-semibold leading-tight truncate">{name}</span>
-                        <span className="block text-xs text-neutral-500 truncate">{industry} · {place}</span>
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </div>
+          <Title a="Our" b="Clients" center />
+          <ul className="mt-8 lg:mt-12 grid grid-cols-2 lg:grid-cols-4 gap-px rounded-2xl overflow-hidden bg-neutral-200 ring-1 ring-neutral-200">
+            {b.clients.map(([name, place, industry]) => {
+              const Icon = industryIcon(industry);
+              return (
+                <li key={name} className="group flex flex-col bg-white hover:bg-[#ed1c23] p-4 sm:p-5 lg:p-6 min-h-[150px] sm:min-h-[170px] lg:min-h-[190px] transition-colors duration-300">
+                  <div className="flex items-start justify-between gap-2">
+                    <Icon aria-hidden="true" className="w-5 h-5 lg:w-6 lg:h-6 shrink-0 text-[#ed1c23] group-hover:text-white transition-colors" strokeWidth={1.5} />
+                    <span className="text-right text-[10px] sm:text-[11px] font-semibold uppercase tracking-widest text-neutral-400 group-hover:text-white/80 transition-colors">{place}</span>
+                  </div>
+                  <p className="mt-auto pt-6 text-base sm:text-lg lg:text-xl font-medium tracking-tight leading-snug group-hover:text-white transition-colors">{name}</p>
+                  <p className="mt-1 text-xs sm:text-sm text-neutral-500 group-hover:text-white/85 transition-colors">{industry}</p>
+                </li>
+              );
+            })}
+          </ul>
         </Section>
       )}
 
